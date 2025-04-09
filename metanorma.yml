@@ -1,0 +1,9 @@
+---
+metanorma:
+  source:
+    files:
+      - sources/1.1.0/document.adoc
+
+  collection:
+    organization: "IHO: International Hydrographic Organization"
+    name: "IHO S-97 Guidelines for Creating S-100 Product Specifications"

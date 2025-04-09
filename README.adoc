@@ -1,0 +1,76 @@
+// image::./sources/1.1.0/images/figure-s97-logo.svg[S97_logo,248,120]
+
+= IHO S-97 Guidelines for Creating S-100 Product Specifications
+
+image:https://github.com/metanorma/iho-s-97/actions/workflows/generate.yml/badge.svg["Build Status", link="https://github.com/metanorma/iho-s-97/actions/workflows/generate.yml"]
+
+This document is available in its rendered forms here:
+
+* https://metanorma.github.io/iho-s-97/[IHO S-97 (HTML)]
+
+== Purpose
+
+This is the IHO repository for developing the next edition of
+the S-97 Guidelines for Creating S-100 Product Specifications.
+
+WARNING: The contents of this repository are in draft form and are not necessarily in force yet.
+Please refer to the final version published on the official
+https://iho.int[IHO] website.
+
+
+== General
+
+This repository contains the source files of S-97 guidelines, including:
+
+* S-97 1.1.0 - IHO Guidelines for Creating S-100 Product Specifications
+
+These documents are encoded in the
+https://www.metanorma.org/author/topics/document-format/[Metanorma AsciiDoc format].
+
+
+== Structure
+
+`sources/`::
+source of the S-97 documents and models
+
+`_site/`::
+(automatically generated, in the `gh-pages` branch) published document.
+
+
+== Usage
+
+This repository uses `metanorma` to run these processes.
+
+Please refer to
+https://www.metanorma.org/author/iho/authoring-guide/[Metanorma-IHO documentation]
+for authoring guidance.
+
+
+== Installing build tools
+
+See the https://www.metanorma.org/install/[Metanorma install] page.
+
+
+== Building the document
+
+If you have installed the build tools locally, and wish to run the
+locally-installed compilation tools, there is nothing further to set.
+
+If you use a locally installed Metanorma, run:
+
+[source,sh]
+----
+metanorma site generate
+----
+
+If you wish to avoid using local dependencies, use the docker
+version by:
+
+[source,sh]
+----
+docker run -v "$(pwd)":/metanorma -w /metanorma -it metanorma/mn metanorma site generate
+----
+
+== License
+
+See link:LICENSE.adoc[LICENSE].
