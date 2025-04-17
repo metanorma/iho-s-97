@@ -1,0 +1,87 @@
+== Validation checks and data quality
+
+At least two types of validation checks are needed:
+
+* Dataset validation checks for individual datasets. These checks operate on
+individual objects in datasets and on individual datasets as a whole. They should
+check the integrity of individual objects in the dataset (spatial, feature and
+information types); associations between objects in the dataset; any embedded
+metadata or header information in the dataset; and support files referenced in the
+dataset.
+* Package validation checks for verifying the structure and content of packages (for
+example exchange sets) and accompanying metadata.
+
+A common set of validation checks is under development (see <<S97C>>). A
+recommended set of data quality measures has been developed based on dataset
+statistics derived from the validation checks. The recommended measures are also
+described in <<S97C>>.
+
+=== Validation checks for datasets
+
+Validation checks for datasets should cover:
+
+. Completeness; including population of attributes and presence of required
+information, complex attributes without sub-attributes, etc.
+. Logical consistency; for example, missing association targets.
+. Spatial consistency; for example, topological sanity checks for non-crossing
+external boundaries, excessive vertex density in lines, etc.
+. Positional accuracy; for example, closeness of reported coordinate values to
+accepted or known absolute or relative coordinate values.
+. Temporal accuracy; for example, closeness of reported time measurements to
+accepted or known values accepted as or known to be true, correctness of the order
+of events, or validity of data with respect to time.
+. Thematic accuracy; such as attribute values that are consistent with any other
+related attributes and within allowed ranges or sets.
+. References to support files.
+. Other requirements specific to the product; for example, encryption, signatures,
+etc.
+
+Some of these issues are addressed in the common set of validation checks. A
+recommended common set of validation checks is described in <<S97C>>. Product
+Specification developers should supplement the common set with such additional
+checks as are appropriate for the particular products.
+
+=== Validation checks for packages
+
+Validation checks for packages should cover:
+
+. Package completeness -- whether all required components are included, including
+datasets, support files, metadata and appropriate catalogues (for example exchange
+set catalogues, Feature Catalogues and Portrayal Catalogues). Note that the Product
+Specification must indicate which catalogues are appropriate to the delivery method;
+for example, message-based delivery methods may not include catalogues in the
+delivery packages.
+. Package container format and structure -- whether the package is in the approved
+container format (for example ISO 8211, TIFF, etc) and whether appropriate
+encryption and signatures have been applied at the container level. Examples of
+package validation checks are:
+
+* Assuming the Product Specification specified delivery as zip files, is the
+container a zip file of the appropriate type?
+* If the package is arranged in a directory (folder) structure, are the structure
+and names of directories (folders) as required in the Product Specification?
+
+Package validation checks are required to validate delivery packages, but are
+expected to be out of the scope of <<S97C>> and Product Specification teams
+may have to specify their own. The tests for exchange set and service delivery modes
+will obviously be different, but the matter of validating the delivery package or
+stream should be addressed for all delivery modes covered in the Product
+Specification.
+
+=== Common validation checks
+
+Given that some features, information types and Application Schema constructs are
+used in multiple products, there will be validation checks in common with existing
+Product Specifications and any such related Product Specifications should be
+consulted for validation checks. Spatial consistency checks in particular, as well
+as consistency checks related to meta-features, can be expected to be in common with
+several Product Specifications.
+
+Spatial operations used in validation checks must be the operations defined in IHO
+ENC Validation Checks (S-58 Edition 6.0.0 or its successor).
+
+=== Validation checks for base versus update datasets
+
+If the Product Specification defines an update dataset format, the validation checks
+developed for new (base) datasets should be reviewed for their applicability to
+update dataset formats.

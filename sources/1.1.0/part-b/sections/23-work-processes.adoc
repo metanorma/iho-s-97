@@ -1,0 +1,81 @@
+== Work processes
+
+=== Registration and requesting an S- number
+
+Apply for a Product Specification number -- this should ordinarily be assigned when
+the development project is approved during the initiation stage.
+
+Registration of Product Specification artefacts in the IHO GI registry should be
+done in accordance with the procedures established in IHO publication S-99.
+
+=== Project Teams
+
+Project Teams should involve domain specialists, information modelling specialists
+and representatives of OEM/developer communities.
+
+=== Iterative refinement as a development process
+
+Development should plan for iterative refinement, with the following being reviewed
+at the indicated stages of development:
+
+* Initial Application Schema. Reviews of subsequent revisions can be rolled into the
+reviews of the main Product Specification document;
+* First drafts of the main document of the Product Specification and DCEG.
+Subsequent revisions should be reviewed as ready;
+* Feature Catalogue, data format and sample datasets should be checked after each
+major revision to the Application Schema and Feature Catalogue;
+* Portrayal Catalogue -- first draft and significant revisions;
+* Other artefacts or components, such as validation tests -- when substantially
+completed; and after revisions due to changes to the Application Schema, Feature
+Catalogue, or data format;
+* The Product Specification as a whole -- after the complete package is ready.
+
+Reviews of different components can be combined to fit the development schedule or
+Working Group meeting schedules. The Application Schema, main Product Specification
+and DCEG should be expected to undergo multiple reviews during different stages of
+development.
+
+Reviews during the development stage should be requested from:
+
+* Project Team -- initial reviews;
+* Technical group(s) sponsoring the Specification, as well as related technical
+Working Groups -- after some stability has been achieved;
+* Developers, implementers, and OEMs -- formal reviews after initial reviews and
+stabilization in the Project Team and sponsoring technical Working Group. Note that
+individual implementer/OEM/developers should ideally be involved from the earliest
+stages of development if available.
+
+Reviews should be conducted for completeness, correctness, ability to capture and
+express the domain, performance/efficiency; as well as conformance reviews for
+verifying compliance to S-100 and underlying Standards.
+
+In addition, the IHO Data Quality Working Group should review the Product
+Specification for completeness.
+
+Stakeholder reviews should be requested as the Specification matures, and should
+involve:
+
+* Producers;
+* Developers and OEMs.
+
+Subsequent stages should involve users and user testing; and preparation of an
+impact study.
+
+Test development and testing should commence upon the Feature Catalogue and data
+format achieving reasonable stability, presumably after one or two cycles of review.
+
+Final assessment will be at the HSSC level for IHO; or equivalent for other
+organizations.
+
+Pre-publication review will be conducted by the IHO or other publishing organization
+prior to publication, to check production issues.
+
+=== Maintenance of Product Specifications
+
+Clarifications, corrections, and revisions should be designated in accordance with
+the same criteria used for S-100 as described in
+<<S100,part=12,clause="12-2">>.
+
+Product Specifications should undergo periodic review. A two-year review period is
+suggested for new Specifications, which may be increased to five years after the
+Specification reaches maturity.

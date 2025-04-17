@@ -1,0 +1,33 @@
+= IHO Guidelines for Creating S-100 Product Specifications -- Part C: Data quality
+:series: S
+:docnumber: 97
+:doctype: specification
+:edition: 1.1.0
+:language: en
+:published-date: 2020-06
+:copyright-year: 2020
+:status: in-force
+:committee: hssc
+:workgroup: S-100
+:mn-document-class: iho
+:mn-output-extensions: xml,html,doc,pdf,rxl
+:local-cache-only:
+:data-uri-image:
+:imagesdir: images
+
+include::sections/01-overview.adoc[]
+
+include::sections/02-intro.adoc[]
+
+include::sections/03-references.adoc[]
+
+include::sections/04-terms.adoc[]
+
+include::sections/05-measures-overview.adoc[]
+
+include::sections/06-recommendations.adoc[]
+
+include::sections/07-data-quality-meas.adoc[]
+
+include::sections/08-min-standard.adoc[]
+

@@ -1,0 +1,9 @@
+== Introduction
+
+The intent of Part B is to explain the various components of a Product Specification
+for those that are developing S-100 based Product Specifications. It describes the
+typical phases of development for the typical Product Specification; and a
+prescribed order for each phase. It provides guidance on how the rules contained in
+S-100 are used to build the components of a Product Specification, including
+documentation components; UML models; and machine-readable components such as XML
+Feature Catalogues and data formats.

@@ -1,0 +1,938 @@
+== S-100 Product Specification template and its components
+
+A data Product Specification is a precise technical description that defines a
+geospatial data product. It describes all the features, attributes and relationships
+of a given application and their mapping to a dataset. It includes general
+information for data identification as well as information for the following:
+
+* data content and structure;
+* reference system;
+* data quality aspects;
+* data capture;
+* portrayal;
+* maintenance;
+* delivery; and
+* metadata.
+
+<<S100,part=11>> describes how a Product Specification for geographic data products
+utilizing S-100 should be formatted. The aim of <<S100,part=11>> is to provide a
+clear and consistent structure for all S-100-based Product Specifications. A Product
+Specification has several components -- typically a main document that provides the
+human-readable documentation; and machine-readable files for information such as the
+Feature Catalogue and Portrayal Catalogue. An example of a compliant Product
+Specification is shown in <<S100,locality:appendix="11-B">>.
+
+=== General S-100 concepts important to the readability of the product specification
+
+==== Mandatory versus optional requirements
+
+In order to be compliant to S-100, Product Specifications must contain specific
+mandatory items. For example, inclusion of a Feature Catalogue is mandatory, while a
+Portrayal Catalogue is optional. S-100 utilizes the multiplicity field to aid in
+determining which elements are mandatory within each product specification.
+<<table2>> below is an example of such a table.
+
+[[table2]]
+.Example of S-100 table (Informal Description of the Data Product, <<S100,table="11-1">>)
+[options=header]
+|===
+| Name | Description | Mult | Type
+
+| title | Official designation of the data product | 1 | CharacterString
+| abstract | Informal description of the data product | 1 | CharacterString
+| acronym | Any acronyms for the title of the data product | 0..* | CharacterString
+| content | Textual description of the content of any dataset which conform to the specification | 1 | CharacterString
+| spatialExtent | Description of the spatial extent covered by the data product | 1 | EX_Extent (ISO 19115-1)
+| temporalExtent | Description of the temporal extent covered by the data product | 0..1 | EX_Extent (ISO 19115-1)
+| specificPurpose | Specific purpose for which the data shall be or has been collected | 1 | CharacterString
+|===
+
+In the above example, the Mult (short for "Multiplicity") column indicates which
+elements are mandatory and which are optional. S-100 uses the following notation to
+indicate types of multiplicity:
+
+* 1 -- Mandatory
+* 1..* -- At least one or many
+* 0..1 -- Either optional or only one
+* 0..* -- Either optional or many
+
+==== CamelCase and its use in S-100
+
+S-100 uses camelCase extensively, and is based on principles from ISO 19103. Camel
+case (stylized as camelCase or CamelCase) is the practice of writing compound words
+or phrases such that each word or abbreviation in the middle of the phrase begins
+with a capital letter, with no intervening spaces or punctuation. Common examples
+include "iPhone ", "eBay", "FedEx", "DreamWorks", "HarperCollins", "iCarly",
+"WordWorld", and "WordGirl". S-100 makes use of camelCase as a method to construct
+distinct identifiers or names of elements used within S-100 and the IHO Geospatial
+Information (GI) Registry.
+
+According to <<S100,clause="2a-4.2.3">>, the camelCaseIdentifier must meet the
+following specifications:
+
+* Be compound words in which the words are joined without spaces and are capitalized
+within the compound;
+* Be unique within the Registry; and
+* Conform to ISO 10646{blank}footnote:[S-100 2a-4.2.3, specify ISO/IEC 646 (ASCII),
+while elsewhere 10646 (UTF-8) is used. Since it can be problematic to mix UTF-8 and
+ASCII, this guidance recommends to utilize only UTF-8.]
+with uppercase characters A-Z, 0-9, "_", and lowercase characters a-z.
+
+In addition:
+
+* Features and Information types must begin with uppercase A-Z; and
+* Complex and Simple Attributes, Codelists, Enumerated and Codelist values must begin
+with lowercase a-z.
+
+[example]
+BeaconCardinal is the Camel Case identifier for the feature Beacon Cardinal
+
+[example]
+categoryOfLandmark is the Camel Case identifier for the attribute Category
+of Landmark
+
+=== Main parts of an S-100 Product Specification
+
+This section provides a highlight of the parts that make up an S-100 Product
+Specification.
+
+==== The overview section and its sub-elements
+
+The Overview section of a Product Specification provides a reader with general
+introductory information about the data product together with Product Specification
+metadata. S-100 states that the Overview shall include the following parts (except
+"References" and "Use of Language" but this guidance recommends inclusion of these
+sections too):
+
+* Introduction
+* References
+* Terms, definitions and abbreviations
+** Use of Language
+** Terms and Definitions
+** Abbreviations
+* General data product description
+* Data Product Specification metadata
+* Product Specification maintenance
+
+===== Introduction
+
+This section gives information about the creation of the Product Specification, which
+includes the subject matter and intent of the Product Specification.
+
+===== References
+
+This section should list standards which define integral elements of the Product
+Specification; or on which implementations depend, such as normative ISO or other
+standards. Other standards or documents containing useful information which is not an
+integral part of the Product Specification may be listed as informative references.
+
+===== Use of language
+
+Although optional, it can be beneficial to add a Use of Language section to elaborate
+the intended meaning of specific words used within the Product Specification
+documentation, including appendices and annexes. The purpose is to remove as much
+ambiguity as possible so that the Specification is clear regarding what is a
+mandatory requirement, what is highly recommended and what is optional. Within S-100,
+the following has been adopted for use of language:
+
+* "Must" indicates a mandatory requirement.
+* "Should" indicates an optional requirement that is the recommended process to be
+followed, but is not mandatory.
+* "May" means "allowed to" or "could possibly", and is not mandatory.
+
+===== Terms and definitions
+
+Terms and definitions are useful references that reflect the content of the
+Specification as well as the context for its intended use.
+
+===== Abbreviations
+
+Any abbreviations used in the Specification should be listed with their full meaning
+in a separate abbreviations section within the introductory parts of the Product
+Specification.
+
+====== Acronyms
+
+It is customary to give an acronym for the name of the data product; for example AML
+(Additional Military Layer) or ENC (Electronic Navigational Chart). Acronyms may also
+be used throughout the Specification for a variety of reasons; these should be
+collected in an acronym paragraph at the beginning of the document to serve as a
+quick reference for the reader.
+
+[[cls-A-6.2.1.6]]
+===== General data product description
+
+This section is an informal description of the data product, which can read like an
+abstract of the Specification, its purpose and intended use context. See also
+<<cls-A-6.2.4>>.
+
+===== Product specification maintenance
+
+Changes to a Product Specification issued by the IHO will be released as a New
+Edition, a Revision, or as a document that includes Clarifications. Which level is
+used depends on the nature of the change. It is likely that other issuing authorities
+will follow IHOs example. Generally, this text follows the guidance given in
+<<S100,part=12>>, where three types of change are described: New Edition, Revision
+and Clarification. These changes are defined in the following sub-clauses.
+
+====== New Editions
+
+New Editions introduce significant changes. New Editions enable new concepts, such as
+the ability to support new functions or applications, or the introduction of new
+constructs or data types. New Editions are likely to have a significant impact on
+either existing users or future users of a Product Specification.
+
+====== Revisions
+
+Revisions are defined as substantive semantic changes. Typically, Revisions will
+introduce changes to correct factual errors or introduce necessary changes that have
+become evident as a result of practical experience or changing circumstances. A
+Revision must not also be classified as a Clarification. Revisions could have an
+impact on either existing users or future users of the Specification. All accumulated
+Clarifications will be included with the release of approved Revisions.
+
+Changes in a Revision ensure backward compatibility with the previous versions within
+the same Edition. Newer Revisions, for example, introduce new features and
+attributes. Within the same Edition, a dataset of one version could always be
+processed with a later version of the Feature and Portrayal Catalogues. In most cases
+a new Feature or Portrayal Catalogue will result in a Revision of the Specification.
+
+====== Clarifications
+
+Clarifications are non-substantive changes. Typically, Clarifications remove
+ambiguity; correct grammatical and spelling errors; amend or update cross references;
+and/or insert improved graphics, spelling, punctuation and grammar. Clarifications
+must not cause any substantive semantic changes.
+
+Changes in a Clarification are minor and ensure backward compatibility with the
+previous versions within the same Edition. Within the same Edition, a dataset of one
+Clarification version could always be processed with a later version of the Feature
+and Portrayal Catalogues; and a Portrayal Catalogue can always rely on earlier
+versions of the Feature Catalogue.
+
+==== Version numbers
+
+The associated version control numbering to identify changes (n) in S-100 and derived
+Product Specifications generally follow this format:
+
+* New Editions denoted as n.0.0
+* Revisions denoted as n.n.0
+* Clarifications denoted as n.n.n
+
+The same format for versioning has also being adopted for most of IHOs other
+Standards.
+
+==== Specification scopes
+
+Specification scopes indicate the applicability of designated portions of the Product
+Specification to either the entire product or to parts of the product. For example, a
+coordinate reference system will generally apply to the complete product, while
+maintenance regimes may be different for navigational features versus contextual
+features. This difference would be described using specification scopes. Depending on
+the type of Product Specification, the scope may include items in <<table-A-6-2>>.
+
+[[table-A-6-2]]
+.Specification Scope Information (<<S100,table="11-3">>)
+[options=header]
+|===
+| Name | Description | Mult | Type
+
+| scopeIdentification | Specific identification of the scope | 1 | CharacterString
+| Level | Hierarchical level of the data specified by the scope | 0..1 | MD_ScopeCode (ISO 19115-1)
+| levelName | Name of the hierarchy level | 0..1 | CharacterString
+| levelDescription | Detailed description about the level of the data specified by the scope | 0..1 | CharacterString
+| Coverage | Subtype of a feature that represents real world phenomena as a set of attributes | 0..1 | CharacterString
+| Extent | Spatial, vertical and temporal extent of the data | 0..1 | EX_Extent (ISO 19115-1)
+|===
+
+If a Specification is homogeneous across the whole data product, it is only
+necessary to define a general scope (root scope) to which each section of the
+Product Specification applies. This general scope may look something like the
+following example:
+
+Scope identification:: Global scope
+Level:: 006- series
+Level name:: Dataset
+Level description:: Level applies globally to all ENC datasets
+Coverage:: All features in the ENC Feature Catalogue
+Extent:: EX_GeographicBoundingBox
+westBoundLongitude::: -180
+eastBoundLongitude::: 180
+southBoundLatitude::: -90
+northBoundLatitude::: 90
+
+The Level attribute is a codelist found in ISO 19115-1 called MD_ScopeCode
+comprising the major components of a Specification. The Extent attribute is a class
+that can be any combination of the following: description string; a geographical
+extent (like in the example above); vertical extent; or temporal extent.
+
+The Product Specification may specify a partitioning of the data content of the
+product on the basis of one or more criteria. Such partitioning may be different for
+different parts of the Product Specification. Each such part of the data content is
+described by a specification scope that may inherit or override the general scope
+specification. In principle, any or all of the remaining sections of the Product
+Specification may have variants that apply to the scopes within the product. Each
+variant must identify the scope(s) to which it applies.
+
+EXAMPLE: Data products to support navigation often contain two sets of feature
+types: those that provide navigation information that changes rapidly and the
+presence of which is essential for safety of navigation; and those that provide
+background reference information. Maintenance and delivery information would be
+partitioned on the basis of these groupings; essential information would be
+maintained and delivered whereas reference system information would not.
+
+[[cls-A-6.2.4]]
+==== Dataset identification
+
+In addition to the informal description of the data product (see also
+<<cls-A-6.2.1.6>>), S-100 also calls for a section that describes information that
+uniquely identifies any dataset as being created in accordance with a specific
+Product Specification series.
+
+Different from the general information about the data product, the dataset
+identification is for the individual dataset. For example, the value contained in
+the Purpose attribute may be common among all datasets created from a particular
+Specification. Other attributes may benefit from following a common model or schema,
+while other attributes are codelist types that are defined elsewhere, such as in ISO
+19115-1. These attributes are limited to the values given in those codelists and
+there may be cases where it is beneficial to restrict the given codelists to a
+subset of values.
+
+This information is stored in the metadata that is associated with the dataset.
+Therefore, it is important to ensure that appropriate metadata attributes are
+available; and to harmonize this section with the metadata section.
+
+Some Product Specifications have merged the informal description of the data product
+with the dataset identification section, into a common section. This is an allowed
+option.
+
+==== Data content and structure (Application Schema)
+
+An Application Schema defines the data content and structure of products under
+S-100. Application Schemas are expressed using the Unified Modelling Language (UML)
+as described in <<S100,part=1>> (Conceptual Schema Language) and allow developers to
+implement S-100 Product Specifications in a consistent and maintainable way. The
+General Feature Model of S-100 (<<S100,part=3>>) specifies the rules for developing
+an Application Schema, which includes the conceptual model for features and their
+characteristics and associations.
+
+The S-100 Product Specification Template stipulates that specifications that have
+large Application Schemas need contain only specific examples in UML in the
+Specification document, since the Application Schema is realized in full in the
+Feature Catalogue. Because Application Schemas generally become too big to remain
+easily readable in one page, it may be beneficial for overall readability to split
+up the Application Schema into sections based on functions and elements.
+
+===== Feature based data content structure
+
+The data content of a geographic application is defined with a view of real world
+features and the requirements of a particular application. The content is structured
+in terms of objects. S-100 considers two types of objects or features, which are
+defined in <<S100,part=3,clause="5.1">>. They are defined as follows:
+
+. Features -- Features are defined together with their properties. Features are
+abstract representations of real world phenomena. The word 'feature' can be used in
+two senses: feature type and feature instance. A feature type is a class and is
+defined in the Feature Catalogue. A feature instance is a single occurrence of the
+feature type and is represented as an object in a data set.
+. Information -- Information types are used to share information among features and
+other information types. An information type is a class of object that is defined in
+the Feature Catalogue. An instance of an information type is an identifiable unit of
+information in a data set. Information types have only thematic attribute
+properties. An instance of an information type may be associated with one or more
+feature instances or one or more instances of other information types. Information
+types can be thought of as shared attributes.
+
+The General Feature Model (GFM) provides a conceptual model for these objects. The
+definitions for feature types are held in the Feature Catalogue. The GFM also acts
+as a conceptual model for the Feature Catalogue. Spatial information is defined in
+<<S100,part=7>>, Spatial Schema, and consists of simple geometry which can be
+expressed in multiple configurations. The Application Schema must define the spatial
+components used in a Product Specification and the relationship to the feature
+classes.
+
+===== Coverage-based data content structure
+
+S-100 also defines imagery, gridded and coverage data as feature-oriented data. In
+the simplest form, an image or any set of gridded data can be considered as a single
+feature. Thus, Application Schema rules for feature data also apply to imagery and
+gridded data. However, care must be taken to ensure that the Application Schema
+accurately defines the Imagery and Gridded Data Spatial Schema in accordance with
+<<S100,part=8,clause="8-6">>; and the Gridded Data Spatial Referencing as defined in
+<<S100,part=8,clause="8-8">>. If the product contains a series or set of images or
+gridded data sets, then the Application Schema defining the spatial relationships
+should be defined as specified in <<S100,part=8,clause="8-7">>.
+
+==== Data product format
+
+S-100-based Product Specifications shall define the format (encoding) in which each
+scope within the data product is delivered. This includes a description of file
+structures and formats where applicable, or the format of a data stream if so
+applicable. The encoding structure could be specified completely in the
+Specification, or by reference to a separate profile or standard. Currently, S-100
+includes profiles of three encodings: ISO 8211 binary encoding; GML (ISO 19136)
+encoding; and HDF5 encoding. A Product Specification may reference these profiles
+along with a description of how to use them within the specific Product
+Specification. For example, a given product would have a specific GML Application
+Schema, expressed in one or more XML Schema Definition Language files.
+
+Specialized products may use other encodings by specifying the whole encoding within
+the Product Specification (or by referencing an established external standard, or an
+appropriate combination of the two). It should be noted that in such cases,
+implementation costs may be higher than for systems using the standard S-100
+encodings.
+
+A brief description of the S-100 profiled encodings is provided in the following
+clauses.
+
+===== ISO 8211
+
+The ISO/IEC 8211 Specification is a data descriptive file format for information
+interchange. <<S100,part="10a">> specifies the structure of an exchange set at the
+record and field levels. It further specifies the contents of the physical
+constructs required for their implementation as ISO/IEC 8211 data records, fields,
+and subfields. The grouping of records into ISO/IEC 8211 files is considered
+application specific and, therefore, must be described in the relevant Product
+Specification. <<fig-A-6-1>> below depicts an example of such a description. In
+S-100 only the binary ISO/IEC 8211 format is used.
+
+[[fig-A-6-1]]
+.Example of Field Tables
+image::img01.png[]
+
+===== GML
+
+The Geography Markup Language (GML) is an XML grammar defined by the Open Geospatial
+Consortium (OGC)/ISO 19136 to express geographical features. GML serves as a
+modelling language for geographic systems as well as an open interchange format for
+geographic transactions on the Internet. It should be noted that the concept of
+feature in GML is a very general one and includes not only conventional "vector" or
+discrete objects, but also coverages and sensor data. The ability to integrate all
+forms of geographic information is the key to the utility of GML.
+
+<<S100,part="10b">> specifies a profile of GML that is used as a basis for the
+development of GML application schemas for S-100-based data products. The GML
+Application Schema for each data product defines a file format for the
+machine-to-machine exchange of information structured in conformance with the
+Application Schema for the data product, as defined in the appropriate Product
+Specification.
+
+The S-100 GML profile defines the core GML components that are used in GML encodings
+for S-100-based data products. This profile defines a restricted subset of XML and
+GML types that excludes GML features not required by S-100 GML datasets. This subset
+of GML is then used to create the specific GML encoding for a Product Specification.
+This approach is described in <<fig-A-6-2>> below.
+
+[[fig-A-6-2]]
+.Derivation of the GML profile and its use by a data product
+image::img02.png[]
+
+===== HDF5
+
+The Hierarchical Data Format 5 (HDF5) HDF has been developed by The HDF Group as a
+file format for the transfer of data that is used for imagery and gridded data. HDF5
+is particularly good at dealing with data where complexity and scalability are
+important. Data of virtually any type or size can be stored in HDF5, including
+complex data structures and data types. <<fig-A-6-3>> below depicts the structure of
+a typical HDF5 file.
+
+<<S100,part="10c">> specifies a profile of HDF5 that is adopted for S-100. It
+specifies how to use HDF5 in a way that is compliant with the GFM and how to
+consistently specify the data formats for the types of coverages and point sets
+supported by S-100.
+
+[[fig-A-6-3]]
+.Image showing (left side) the structure of the file and (right side) the two-dimensional compound array of values for regularly gridded data
+image::img03.png[]
+
+===== Other encodings and encoding profiles
+
+When the encodings in S-100 as profiled are not sufficient for the intended use of a
+Product Specification, a different encoding may be specified within the Product
+Specification itself. If an encoding that is not part of S-100 is used, then
+sufficient detail should be given to permit implementers an easy understanding of
+the chosen encoding.
+
+NOTE: If a non S-100-based encoding is chosen, then systems that support S-100 may
+not be able to handle data products that utilize this encoding (for example, ECDIS).
+An alternative is to request additional encoding profiles be added to S-100, which
+can then be added to systems that comply with S-100.
+
+If a non S-100 encoding is used, then the metadata must be correctly encoded to
+indicate that the Product Specification contains the encoding format for the data
+product. This is done using the Undefined value of the S100_DataFormat attribute in
+the discovery metadata of every compliant data product. See <<S100,part="4a">> for
+further details.
+
+==== Data content and structure
+
+This section describes the different type of data model elements that are used
+within a Product Specification. S-100 defines a variety of different elements, but
+it is up to the individual Specification to specify which elements are allowed to be
+used. The following is an example of how a subset of elements would be defined
+within a Product Specification.
+
+[example]
+====
+_[underline]#Feature Types#_
+
+< _The following clauses describe the different feature types that may be used in the
+Feature Catalogue._ >
+
+_[underline]#Geographic#_
+
+< _Geographic (geo) feature types form the principle content of the dataset and are
+fully defined by their associated attributes and information types._ >
+
+_[underline]#Meta#_
+
+< _Meta features contain information about other features within a data set.
+Information defined by meta features override the default metadata values defined by
+the data set descriptive records. Meta features must be used to their maximum extent
+to reduce meta attribution on individual features._ >
+
+_[underline]#Feature Relationship#_
+
+< _A feature relationship links instances of one feature type with instances of the
+same or a different feature type. There are three common types of feature
+relationship: Association, Aggregation and Composition._ >
+
+_[underline]#Information Types#_
+
+< _Information types are identifiable pieces of information in a dataset that can be
+shared between other features. They have attributes but have no relationship to any
+geometry; information types may reference other information types._ >
+====
+
+An additional option to describe the model elements included in a Product
+Specification is to group elements according to some logical scheme, and then
+describe those groupings. This method allows a combination of the type description
+and at the same time links it with the usage within the Specification. <<fig-A-6-4>>
+below shows an example of this method, describing all information types in a
+specific Product Specification.
+
+[[fig-A-6-4]]
+.Example of an overview of S-Information Types, from S-123.
+image::img04.png[]
+
+==== Feature Catalogue
+
+ISO 19110 defines a Feature Catalogue as a catalogue that contains definitions and
+descriptions of the feature types, feature attributes and feature associations
+occurring in one or more sets of geographic data. Therefore, the Feature Catalogue
+acts as a machine-readable representation of the Application Schema, and gives a
+system the means to describe the elements of a dataset that conforms to the Feature
+Catalogue.
+
+When a data model is too big to be fully reproduced in UML within in a Product
+Specification, the Feature Catalogue in combination with specific subsets of the
+overall UML Application Schema can serve as a substitute to the requirement of full
+Application Schema being described in the Product Specification.
+
+Product Specifications that are endorsed by the IHO under the S-1XX numbering system
+must use the IHO's Feature Catalogue Builder to ensure compliance to S-100. It is
+possible to create feature catalogues external to the IHO Feature Catalogue Builder
+(FCB); however, the Feature Catalogue should then be validated against the S-100
+Feature Catalogue schema.
+
+==== Dataset
+
+This section specifies rules for the dataset. Types of rules may be related to
+dataset size limitations or types of data coverage and if the data may or may not
+overlap each other.
+
+==== Dataset loading and unloading
+
+If datasets have multiple representations at different scales, then a loading and
+unloading strategy should be considered. There should be sufficient details to give
+system implementers enough information to know how to create or load datasets in the
+correct manner. For example, any rules regarding dataset loading can be described
+using visual instructions like in <<fig-A-6-5>> below.
+
+[[fig-A-6-5]]
+.Example from S-101 data loading rules
+image::img05.png[]
+
+==== Geometry
+
+This section describes the geometry rules that apply within a given Product
+Specification. For vector data the description should include which S-100 Level of
+Geometry is used, as well as any exceptions to the rules as stated in
+<<S100,part=7,clause="7-4.3">>. For coverage data, there should be a description of
+which spatial model and grid from <<S100,part=8>> is used. Any grid, point set or
+TIN (Triangulated Irregular Network) structure rules and characteristics should be
+included, such as shown in the example in <<fig-A-6-6>> below.
+
+[[fig-A-6-6]]
+.Example of attributes and their values for S100_Grid Coverage and S100_Point Coverage.
+image::img06.png[]
+
+==== Reference systems
+
+All S-100-based Product Specifications that include georeferenced information will
+have a horizontal reference system, while vertical reference systems are for
+Specifications that yield data products that include height information or
+bathymetry. A Product Specification may include more than one vertical reference
+system, such as one for sounding data and one for height data.
+
+<<S100,part=6>> provides information on how to describe and specify a reference
+system. The more common method of simply referencing an already specified reference
+system is generally done by establishing a convention in the Product Specification
+by stating the reference system, or list of references systems used; and then by
+adding the information in the metadata of the resulting dataset. <<fig-A-6-7>> below
+is an example from the S-100 Product Specification Template.
+
+[[fig-A-6-7]]
+.Example of Reference Systems references
+image::img07.png[]
+
+As noted in the example in <<fig-A-6-7>>, the EPSG Register is a useful Register of
+horizontal datums. The codelist value for WGS84, the most commonly used horizontal
+datum, is 4326. For vertical datums and sounding datums, S-100 includes an
+enumerated list named S100_VerticalAndSoundingDatum. The most commonly used vertical
+and sounding datums are included in this list. The enumerated list can be extended
+by requesting the IHO S-100 Working Group to include additional values.
+
+==== Object identifiers
+
+It is recommended that rules for persistent global identifiers for feature and
+information objects are included within a Product Specification. Identifiers may be
+omitted where the physical realities dictate otherwise or it is known that a
+reference to the object will not be needed. For example, identifiers need not be
+defined for cartographic objects.
+
+Identifiers of instances should utilize the Maritime Resource Name (MRN) concept and
+namespace. The MRN namespace is administered by the International Association of
+Lighthouse Authorities (IALA) through the website
+http://mrnregistry.org/[http://mrnregistry.org], which also contains references to
+the full set of rules that apply to the MRN concept. The topmost namespace urn:mrn
+remains fixed, with subsequent name spaces separated by colons, and available
+through the application process explained on the website. Any organization wishing
+to issue MRN conformant identifiers should apply for a name space from IALA, or from
+an organization that already has a namespace registered, such as IHO.
+<<S100,part=11,locality:appendix="11-E">> contains additional details about the MRN
+concept.
+
+Guidance should be included on persevering persistent global identifiers on objects
+throughout their lifecycle, including when they are reused in other products.
+Maintaining persistent global identifiers between products can help with
+interoperability and assist users and systems in identifying identical features
+between data products.
+
+==== Data quality
+
+All S-100-based Product Specifications should include comprehensive ways of
+capturing information about the quality of the data. Part C of this Guideline
+includes comprehensive guidance on how to address aspects of data quality.
+
+==== Data capture and encoding instructions
+
+Any S-100-based Product Specification should provide information on how data
+conforming to the Product Specification is to be captured. This information should
+be as detailed and specific as necessary. To this end, the S-100 Product
+Specification Template recommends the development of a Data Classification and
+Encoding Guide (DCEG). The DCEG is used to link real world examples to the data
+model. For example, the DCEG can explain how different types of underwater rock are
+to be encoded using a specific data model, including which feature class should be
+used; what attributes; and their expected values that correspond to the different
+types of underwater rock.
+
+The data capture guide is mostly used by the data producers and serves as a
+collective instructional document of globally common rules on how to create data
+according to a specific Product Specification. The document will grow with
+experience as more special cases get resolved into a globally agreed-upon process.
+This also improves overall consistency among producers and products, leading to more
+stable user systems as all stakeholders gain a common understanding of how to use
+the data products.
+
+==== Maintenance
+
+Generally, data created from an S-100-based Product Specification will not remain
+valid indefinitely. Therefore, it is necessary to specify how data created in
+accordance with a Product Specification will be maintained, including the updating
+of datasets and support files.
+
+There are two main types of updating routines:
+
+* As needed: Datasets are updated when there is a need to do so, and are to be
+considered current information until there is a further update. Electronic
+Navigational Charts and Nautical Publications are two types of data that are
+generally maintained in this manner.
+* By schedule: Datasets are updated on a fixed schedule or interval; and users can
+always anticipate when new datasets become available. Surface current and water
+level information are two types of data that are generally maintained in this manner.
+
+Once updating routines have been established for products, it is necessary to
+establish the means by which to achieve these updates. Again, there are two main
+options: incremental updates; and whole dataset replacement, both of which are
+elaborated upon in the next two sections.
+
+===== Incremental update
+
+This type of updating method is when a previously issued dataset is partially
+updated by inserting new or modifying information. This method is useful where there
+are bandwidth considerations and the changes are relatively minor within the scope
+of the whole dataset.
+
+An example is the addition of two features to a dataset that contains thousands of
+other features; the incremental update would then be a much smaller dataset that
+contains only the revision instructions to the main product data, or base dataset.
+Once the revision instructions are applied, the updated dataset will include the
+additional two objects.
+
+It should be noted that with incremental updates there may come a point when there
+are so many changes that it makes sense to re-issue the dataset. This will include
+all the changes applied previously via incremental update, thereby replacing the
+original base dataset with a new fully updated base dataset; and from there issue
+any changes as new incremental changes. In S-100 Edition 4, ISO 8211 and HDF5
+encodings support this type of updating. GML encoding does not yet support this type
+of encoding.
+
+===== Whole dataset update
+
+This type of updating is a method of updating a previously issued dataset by
+replacing it wholesale with a new dataset. This method makes most sense when the
+replacement data alters all or a sufficiently large portion of the previous dataset
+-- for example, when forecasted data of a certain natural phenomenon is replaced with
+updated forecast data and the update data invalidates the replaced data by virtue of
+being more recent. All encodings in S-100 support this method of updating.
+
+===== Support file maintenance
+
+Updating support files in S-100-based Product Specifications is done through the
+metadata that goes with the support files. The issue date and management information
+is included in the discovery metadata file that is part of the exchange set. Below
+is an example of instructions for updating support files.
+
+[example]
+_The type of support file is indicated in the "purpose" field of the discovery
+metadata. Support files carrying the "deletion" flag must be removed from the
+system. When a feature pointing to a text, picture or application file is deleted or
+updated so that it no longer references the file, the system software must check to
+see whether any other feature references the same file, before that file is deleted._
+
+To avoid complex management routines, it may be advantageous to specify that each
+support file should only be used once in the exchange set and to store the support
+files in a separate folder within the exchange set.
+
+==== Data product delivery
+
+The Product Specification may define the delivery medium (such as DVD or a web
+service) for each identified scope in the Specification. This is an optional
+section, but it includes the structure of delivered data products, and is therefore
+important where data is delivered to systems that include a level of data automation
+where standardized delivery structures may be automated. It is also useful to
+specify when data products are delivered in different formats, such as SENC
+delivery. Data being delivered to ECDIS and similar systems generally expect
+exchange sets. S-100 includes a description of an S-100 exchange set for the
+interchange of geospatial data and its relevant metadata (reproduced in
+<<fig-A-6-8>> below), and details can be found in
+<<S100,part="4a",locality:appendix="4a-D">>.
+
+[[fig-A-6-8]]
+.S-100 Exchange Set (<<S100,figure="4a-D-3">>)
+image::img08.png[]
+
+Within an exchange set, there are datasets; but it may also carry support files.
+There are two types of supporting files within the exchange set: support files for
+the individual dataset; and support files for the exchange set. Support files that
+are associated with the individual dataset usually include file types such as text
+files and image files; while support files that are associated with the exchange set
+are usually Feature and Portrayal Catalogues.
+
+Depending on the target user, data products may be delivered in a variety of supply
+chain methods, such as via Regional ENC Coordinating Centre (RENC), service
+providers, web service, FTP, etc. It can be useful to consider the supply chain when
+specifying the data product delivery.
+
+===== Services and data streams
+
+S-100 includes an alternative distribution method called online data exchange, which
+is described in <<S100,part=14>>. This method can be used for a set of data or data
+that have a continuous nature. The latter is also known as "streaming data" and is
+used where the circumstances requires a more dynamic information flow to be
+available, such as monitoring of ship movement in a VTS setting.
+
+Online data exchange between applications or devices can follow different
+communication patterns to support the variety of maritime operational needs.
+Multiple clients can interact with a service to interchange data that is modelled
+with S-100 and can be distinguished between unidirectional message streams like AIS
+and interactive information exchange like a web feature service (WFS). Context for a
+communication can be given by using the concept of session-oriented communication,
+which is when the communication between distinguished communication partners is
+assigned to a logical entity -- a session. This permits metadata to be defined for
+the interactions assigned to the session.
+
+The means of communication for the use of a service should be defined in a
+communication stack. Specifying a communication stack ensures that communication for
+the service is harmonized and makes implementation easier.
+
+The communication is organized by a stack as defined by the ISO-OSI Reference Model:
+
+* Session protocols (for example, WSDL, SOAP, REST, SOS) to define message types;
+* Encoding and compression (for example, GML, XML, ISO 8211, HDF, ...) to serialize
+data;
+* Communication protocol (for example, HTTP) with encryption (for example, HTTPS) to
+define interaction between gateways; and
+* Transportation Layer (for example, TCP/IP) with encryption (for example, SSL) to
+define the transportation node between gateways.
+
+The stack is depicted in <<fig-A-6-9>> below.
+
+[[fig-A-6-9]]
+.Communication Stack
+image::img09.png[]
+
+<<S100,part=14>> only addresses the concepts in the application and presentation
+layers. The lower layers are out of scope of S-100.
+
+Product Specifications that use the online exchange method must describe the
+concepts that are used to structure a session; and must explain how the data is
+transferred within sessions.A session-oriented service typically contains three
+components, each handling different types of data:
+
+* Session component: Describing the handling of the session data (service request,
+service response, login, login response, logout).
+* Service component: Describing the information to maintain the service (for example
+keep alive messages, service status).
+* Data component: Describing the data itself (for example, Vessel Traffic Image data
+(objects)).
+
+Any Metadata required for each component should be detailed in the Product
+Specification.
+
+==== Dataset naming rules
+
+Dataset naming should follow a standard pattern to give implementers greater
+predictability of incoming datasets. All dataset naming conventions are recommended
+to follow these rules as much as possible.
+
+XXXYYYYØØØØØØØØØ
+
+XXX is the product code (for example, 123 is for Maritime Radio Service; 101 for ENC)
+
+YYYY is the producer code according to the Producer Code Register
+
+ØØØØ is an arbitrary length unique code in alphanumeric characters
+
+If useful, the Product Specification can include a differentiating character or code
+(for example, the underscore (_) character) in the 'ØØØØ' space of the file name.
+
+Support files should follow a similar naming convention.
+
+==== Metadata
+
+Metadata is data about data. In S-100 the primary purpose of metadata is to provide
+information about the identification; spatial and temporal extent; quality;
+application schema; spatial reference system; and distribution of digital geographic
+data. Metadata is applicable to the cataloguing of datasets; clearinghouse
+activities; and the full description of geographic and non-geographic resources.
+
+Metadata can satisfy a number of uses: data discovery; distribution and on-line
+references (URL) for on-line viewing; data use; details of data creation; data
+fitness; data sharing; data management; etc. <<fig-A-6-10>> below depicts some
+typical purposes and audiences for metadata.
+
+[[fig-A-6-10]]
+.Example levels of metadata
+image::img10.png[]
+
+<<S100,part=4>> (Metadata) specifies the minimum metadata elements that must be
+included with a conformant data product. Moreover, S-100 requires that Discovery and
+Quality metadata are structured as per <<S100,part="4a">> and <<S100,part="4c">>,
+respectively. Any additional metadata items required for a particular Product
+Specification must be documented in the Specification; and these should be defined
+using <<ISO19115-1>> and <<ISO19115-3>>, with extensions or restrictions if
+required. <<S100,part=4,locality:appendix="4a-E">> contains the rules that apply
+when extending or restricting the minimum metadata.
+
+The Product Specification Application Schema shall specify how metadata is packaged
+in conformant datasets. This information shall be specified for each identified
+scope within the Product Specification. Furthermore, where the resulting data
+product is intended for a standardized user environment, like ECDIS, it should be
+noted that any significant deviation (for example, addition or reduction to the
+standard metadata) may not be readily useable in the system depending on how the
+standard S-100 schemas have been implemented. Caution is therefore urged when
+developing the metadata for a Product Specification and it is highly recommended to
+stay within the S-100 metadata scope.
+
+===== Discovery Metadata
+
+For information exchange, there are several categories of metadata required:
+metadata about the overall exchange catalogue; metadata about each of the datasets
+contained in the catalogue; and metadata about the support files that make up the
+package. These are called Discovery Metadata in S-100 and they are used within the
+exchange set to enable users to learn about the content without having to open each
+dataset or support file.
+
+====== Discovery Metadata for datasets
+
+S-100 specifies that Discovery Metadata for datasets is contained within an external
+XML file created in accordance with the S-100 metadata schema. This metadata set
+complies with the minimum metadata and extends it in a few places to provide more
+details (for example, about reference datums and issue dates of the data). More
+information about Discovery Metadata for datasets can be found in
+<<S100,locality:appendix="4a-D">>.
+
+====== Discovery Metadata for support files
+
+S-100 specifies that Discovery Metadata for support files is contained within an
+external XML file created in accordance with the S-100 metadata schema. This
+metadata set complies with the minimum metadata and extends it to provide
+information about the management of support files in order for them to be updated.
+More details can be found in the <<S100,locality:appendix="4a-D">>.
+
+====== Metadata for streamed data and services
+
+Metadata for streamed data or services is described in the
+<<S100,locality:appendix="4a-D">>.
+<<S100,part=14>> specifies additional and other metadata. As of
+Edition 4.0.0, <<S100,locality:appendix="4a-D">> and <<S100,part=14>> have yet to be
+reconciled. Product Specification developers should, at this time, use the metadata
+from <<S100,part=14>>; and according to need, supplement with metadata from
+<<S100,part=4>>, including using the principles of metadata extension detailed in
+<<S100,part=4,locality:appendix="4a-E">>.
+
+==== Portrayal
+
+Portrayal is an optional part of a Product Specification. However, if consistent
+portrayal across all user platforms is important to an S-100-based data product,
+then specifying how portrayal is done becomes mandatory. Within S-100 Product
+Specifications, this is done by including a Portrayal Catalogue. The Portrayal
+Catalogue is a collection of defined portrayal instructions for a Feature Catalogue;
+and includes portrayal functions, symbols and portrayal context.
+
+Two types of Portrayal Catalogues are possible in S-100: XSLT and Lua.
+<<S100,part=9>> provides instructions for how a Product Specification can include an
+input Schema derived from the abstract schema provided; a set of mapping rules
+(defined in XSLT or Lua); a set of symbols (defined in SVG format); line styles,
+colours, etc; and makes it available for use with product datasets. Portrayal
+Catalogues can be created in a variety of ways, including manually and by using a
+Portrayal Catalogue Builder (see <<cls-A-7.4>> of this Guideline for more details).
+
+Portrayal Catalogues can be provided, for example, in an exchange set and may be
+combined with a Feature Catalogue and datasets. The exact method for distribution
+should be defined in the Product Specification, but consideration should be given to
+efficient distribution and the aim of reducing data volume wherever possible. It may
+therefore be beneficial to consider some form of central distribution of Portrayal
+Catalogues.
+
+The Product Specification should include instructions for implementers in the use of
+the Portrayal Catalogue, including context for the use of the data.
+
+Many of the IHO Product Specifications will be used in systems that have some degree
+of type approval requirements (for example, ECDIS). Instructions for the
+classification society conducting the type approval should be added to Product
+Specifications where appropriate. These instructions should include guidance on
+tolerances for minor deviations and definitions of what constitutes a minor
+deviation.
+
+==== Additional information
+
+The Product Specification should contain all information at a sufficient level of
+detail for easy implementation by the intended stakeholders. However, there may be
+additional considerations that impact implementers, users and other stakeholders.
+These additional considerations can be added to a section or appendix called an
+Implementation Guide, or another appropriate title. Such a section can be used to
+give context of intended use, or used to elaborate on special circumstances that
+impact stakeholders, and so forth.

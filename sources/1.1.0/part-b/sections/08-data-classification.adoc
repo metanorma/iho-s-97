@@ -1,0 +1,13 @@
+== Data Classification and Encoding Guide
+
+The Data Classification and Encoding Guide (DCEG) provides information on how the
+data is to be captured. This should be as detailed and specific as necessary. The
+DCEG is used primarily by cartographers, editors, and data encoders, rather than
+application developers or OEMs; and should be written from that perspective.
+
+The DCEG includes the collection criteria for mapping real world objects to the
+conceptual objects of the dataset.
+
+Any organization performing data capture for the data product defined by the Product
+Specification must provide references to any more detailed encoding guide used in
+addition to that indicated in the Product Specification for the capturing process.

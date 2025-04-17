@@ -1,0 +1,81 @@
+== Define data encoding format
+
+=== Selection of encoding format
+
+The encoding format should be selected based on the type of product and other
+requirements, including production and processing. The characteristics of the three
+standard data formats included in S-100 Edition 4.0.0 are summarized in
+<<table-B-13-1>> below for convenience.
+
+[[table-B-13-1]]
+.Characteristics of S-100 standard encoding formats
+[options=header,cols=4]
+|===
+|
+| ISO 8211
+| GML
+| HDF5
+
+| Type of product to which suited | Nautical charts and feature-heavy vector data | Nautical publications and information-heavy vector data; discrete weather information; small datasets such as marine safety information; data delivered via messages and web services | Coverage-based data
+| Generic data format | Yes | Yes | Yes
+| Data production complexity | Requires custom tools | Can be produced with a range of tools from text editors to custom apps and database SQL queries | Custom apps that use off-the-shelf libraries
+| Processing complexity | High | Low | High
+| Supporting off-the-shelf software | Yes | Off-the-shelf viewers and server software; can be viewed with ordinary text editors | Off-the-shelf viewer
+| Data volumes | Lower | Higher | Lower
+| Type of data | Vector | Vector; coverage schemas are defined in the GML specification but not used in S-100 | Gridded
+| Supporting artifacts needed in Product Specifications | Feature Catalogue | XML schemas for data validation; datasets can be processed by apps without XML schemas; self-documented format (tags indicate objects and attributes); Feature Catalogue optional | Embedded object and attribute tags; Feature Catalogue optional
+|===
+
+While other formats than the three standard encodings are possible, the use of a
+non-standard format has the following implications:
+
+* Loss of genericity, requiring special purpose development by implementers or
+conversion to a standard format with impacts on performance.
+* Potential loss of compatibility with interoperability.
+
+The question of appropriate formats for transactional, web-service, or message-based
+information has not been formally addressed in depth at this time, but Product
+Specifications needing such delivery modes should endeavour to use one of the
+standard formats in order to minimize implementation complexities.
+
+=== Data format definition artefacts for GML
+
+Selection of the GML format will require definition of XSD files encapsulating the
+S-100 Application Schema and conforming to the GML specification (<<ISO19136>> and
+<<S100,part=10b>>). There must be a 1/1 mapping from the Application Schema to XML
+schema constructs in the GML XSD files that implement the model as GML Application
+Schemas.
+
+* Feature and information classes in the UML domain model map to XML complex types
+and XML elements. The class (camel case) name is the same as the element name (XML
+tag excluding any namespace).
+* Simple attributes in the UML domain model map to XML elements contained in the
+feature and information complex types mentioned above. The names (XML tags,
+excluding any namespace) are the same as the (camel case) names of the UML
+attributes.
+* Complex attributes in the UML domain model map to XML elements contained in the
+feature and information complex types mentioned in the first bullet. The names (XML
+tags, excluding any namespace) are the same as the (camel case) names of the UML
+attributes. The types of these XML elements are XML complex types with the same
+(camel case) name, either with or without "Type" suffixed.
+* Enumerations map to XML enumerations of the same (camel case) name.
+* Codelists map to XML union types of the same (camel case) name; one member of the
+union type is an anonymous enumeration of the listed values and another member is a
+string restricted to the pattern "other: ..." as specified in
+<<S100,part=3,clause="3-6.7">>.
+* Associations are encoded as elements contained in the feature and information
+complex types, named according to the role indicated in the UML domain model and
+with a GML attribute that contains the gml:id of the referenced object.
+
+Schema developers should note that conformance to the GML specification requires
+conformance to the rules set forth in the GML specification (<<ISO19136>> /
+<<OGC07-036>>), not merely XML-validation against the GML schemas.
+
+<<S100,part="10b">> describes the S-100 GML profile. The XSD files for the S-100 GML
+profile are available at the IHO S-100 distribution site
+(https://github.com/IHO-S100WG). Previously defined GML schemas for other Product
+Specifications (for example S-122, S-123) will provide useful guidance and will be
+made available through the IHO Product Specification distribution site or GitHub
+distribution site.
+
+Guidance for generic processing for GML datasets is included in S-100 Edition 4.0.0.

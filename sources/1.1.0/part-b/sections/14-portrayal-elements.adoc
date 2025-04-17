@@ -1,0 +1,31 @@
+== Portrayal elements and rules
+
+Portrayal Catalogues are necessary only for data products that are intended to be
+displayed graphically (as opposed to text or other processing).
+
+Often there will be only one intended application domain -- generally ECDIS -- and a
+limited number of closely related usage scenarios (that is, route
+monitoring/planning and voyage planning) utilizing one Portrayal Catalogue. Some
+data products may not be intended for display, in which case no Portrayal Catalogue
+is needed. Other data products may be intended for more than one application domain,
+in which case the possible need for different Portrayal Catalogues should be
+considered. Different usage scenarios may also benefit from different Portrayal
+Catalogues.
+
+S-100 defines an XSLT-based portrayal mechanism in <<S100,part=9>>. Edition 4.0.0
+adds the LUA scripting language as a second portrayal mechanism and defines a
+standard mechanism for including scripting support in S-100 based products.
+Developers/OEMs may prefer LUA due to promises of performance and similarity to
+common programming languages.
+
+The portrayal section of a Product Specification should include:
+
+* Pictorial representations of symbols and colours, accompanied by symbol
+specifications (the latter preferably in the form of machine-processable files as
+well as formal specifications in the text of the portrayal section).
+* Specifications and recommendations for the use of symbols by implementers; for
+example, calculating orientation from attribute values and the use of thinning to
+reduce crowding of displays at small display scales, display of text accompanying
+symbols, masking of boundaries, etc.
+* Products that need to be included in ECDIS must have day, night, and dusk palettes
+defined.

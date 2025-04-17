@@ -1,0 +1,334 @@
+== Metadata
+
+The minimum metadata requirements are set forth in <<S100,part=4>>
+(<<S100,part=4,locality:appendix="4a-D">> for vector data, <<S100,part="4b">> and
+<<S100,part=8>> for coverage data). Product Specification developers should consider
+whether the metadata elements listed in S-100 are relevant to the data product and
+which of them are appropriate for its allowed packaging and delivery methods. For
+relevant elements, define appropriate values and restrictions if necessary for the
+metadata elements listed in <<S100,locality:appendix="4a-D">> or <<S100,part="4b">>
+and <<S100,part=8>>. Developers should note that <<S100,part="4b">> is quite
+skeletal in S-100 Edition 4 and the development team will need to use the underlying
+ISO standards and ISO metadata schemas.
+
+[[cls-B-12.1]]
+=== Metadata for exchange set products
+
+This section describes metadata for products that are delivered in exchange sets.
+
+[[cls-B-12.1.1]]
+==== Generic metadata model
+
+S-100 provides for S-100 discovery metadata for exchange sets to be encoded in the
+Exchange Catalogue. <<fig-B-12-1>> below depicts an example of relevant cases. The
+latest approved S-100 discovery metadata model is located within the latest edition
+of <<S100,part=4>>.
+
+[[fig-B-12-1]]
+.Exchange Catalogue and discovery metadata classes
+image::img24.png[]
+
+If additional metadata elements are required they should be documented in the
+Product Specification Metadata section and extensions to the generic metadata
+schemas developed using the standard ISO extension mechanism.
+
+[IMPORTANT]
+====
+Prior to the creation of extended metadata, a careful review of the existing
+metadata within <<ISO19115-1>> [and the S-100 generic metadata model] must be performed
+to confirm that suitable metadata does not already exist. If suitable metadata exist
+within <<ISO19115-1>> [or the generic S-100 metadata model], then it must be used.
+(<<S100,part="4a",locality:appendix="4a-E">>, extended to include S-100 generic
+metadata.)
+====
+
+IHO metadata XML schemas for Exchange Catalogues and discovery metadata have been
+developed and are available at the IHO software distribution site
+(https://github.com/IHO-S100WG) and will be served through the IHO GI Registry
+(http://registry.iho.int/main/main.do;jsessionid=C9E59D5CB576A6038F36BA557ACCA710[http://registry.iho.int/])
+or another IHO site ultimately.
+
+An Exchange Catalogue Builder to be provided by IHO is under development. Exchange
+Catalogues can also be prepared using off-the-shelf commercial and open-source XML
+editing and authoring tools. Generic tools for ISO metadata can be used for ISO
+metadata files for each dataset (in S-100 Edition 4 and S-100 Edition 3, the ISO
+metadata files are separate from, and referenced by, the Exchange Catalogue XML
+files).
+
+[[cls-B-12.1.2]]
+==== Use of the IHO S-100 generic metadata model and schemas in Exchange Catalogues
+
+If the generic S-100 Exchange Catalogue format and XML schemas cannot be used as is,
+either with or without restrictions, then Product Specifications must derive their
+metadata models from the generic model in <<S100,part="4a">> (supplemented with
+<<S100,part="4b">>, for gridded data). Derivations may be restrictions, extensions,
+or a combination of both. Derivations must conform to the rules in
+<<S100,part="4a",locality:appendix="4a-E">>. Custom UML diagrams similar to
+<<S100,figure="4a-D-4">> are required for Product Specifications that add classes or
+attributes, and recommended if Product Specifications omit optional
+classes/attributes or restrict allowed values in enumerations.
+
+<<S100,part="4a">> specifies which of the S-100 metadata classes and attributes are
+mandatory and which are optional. Product Specifications may omit optional S-100
+metadata classes or attributes as appropriate.
+
+Restrictions on S-100 classes and attributes must be expressed as constraints.
+Restrictions include making an optional attribute mandatory or using a subset of
+attribute values. Restrictions do not require new metadata classes either.
+
+The model can be extended with product-specific classes derived from the classes in
+the generic model. Derived classes can define additional attributes.
+
+In order to implement a product-specific metadata model, the S-100 XML schemas that
+encode generic S-100 metadata can be supplemented with:
+
+* Executable constraint checks to apply product-specific restrictions, in
+Schematron{blank}footnote:[Schematron rules can be checked using off-the-shelf
+software like XML editors, but implementations can implement the constraints in any
+suitable language for production tools or applications which cannot integrate
+Schematron validation or XSLT in their workflows.]
+or another language.
+* Product-specific schemas that import the generic XML schemas and extend the
+generic XML types, to capture extensions.
+
+This method means no change to the generic Exchange Catalogue XML schema or XSD
+files is needed. Instead product-specific customization can be implemented by adding
+supplementary files to the S-100 generic implementation.
+
+<<table-B-12-1>> below describes how Product Specifications can describe their
+metadata models. The actions are elaborations of the allowed extensions listed in
+<<S100,part="4a",locality:appendix="4a-E">>. The UML diagram would be based on
+<<S100,figure="4a-D-4">>.
+
+[IMPORTANT]
+====
+Product Specifications must define their metadata models by either reusing the S-100
+generic metadata model or extending the generic model in conformance with the rules
+in <<S100,locality:appendix="4a-E">>.
+
+<<ISO19115-1>> and <<S100,part="4a-E">> state: Prior to the creation of extended
+metadata, a careful review of the existing metadata within <<ISO19115-1>> must be
+performed to confirm that suitable metadata does not already exist. If suitable
+metadata exist within <<ISO19115-1>>, then it must be used.
+
+Unnecessary specializations of the generic S-100 metadata classes should therefore
+be avoided.
+====
+
+[[table-B-12-1]]
+.Specifying metadata in Exchange Catalogues for individual Product Specifications
+[cols=4,options=header]
+|===
+| Action | UML diagram | Documentation table | XML implementation
+
+| Omit an optional class or attribute | Suppress its display using diagramming tool functionality. | Omit the corresponding table or row. | Rule to check that the XML element [underline]#is not# present.
+
+| Make an optional class or attribute mandatory | No change. The multiplicity will still be 0.. but a diagram note may be added stating that it is mandatory in this product. | Multiplicity column should have the mandatory multiplicity and the Remark column a remark stating it is mandatory in this product. | Rule to check that the XML element [underline]#is# present.
+
+| Restrict multiplicity 3+| As for the previous row, with appropriate modifications.This is the general case of making an optional attribute mandatory.
+
+| Limit enumeration values to a subset | Suppress display of excluded values using diagramming tool functionality. | Omit the corresponding row. | Rule to check that the value [underline]#is not# used.
+
+| Restrict the value of a text, numeric, CharacterString attribute | No change required. | Specify the value in the Remark column. | Rule to check that the value is as specified.
+
+| Add a new metadata class or attribute | Specialize the appropriate S-100 metadata class and add the new class or attribute. | Add a new documentation table, or extend the table describing the original class. Inherited attributes should be distinguished from direct attributes. | Additional XSD that imports the generic metadata XML schema and extends its types.
+
+| Add a new metadata package in the Exchange Catalogue.(Note: Whether the new package must be in the Exchange Catalogue or the ISO metadata depends on product-specific considerations like its expected use in applications) | Add the class or classes for the new package and aggregate to a specialization of the Exchange Catalogue container class (S100_ExchangeCatalogue). | New tables for the new classes and extended catalogue container class. | As specified in <<ISO19115-3>> and <<S100,clause="4a-5.6.5">>). If required in the Exchange Catalogue, additional XSD that imports the generic metadata XSD and extends its types.
+
+| Add a new metadata package only in ISO metadata | Diagram(s) extending <<S100,figure="4a-1">> and specifying new classes and attributes. | New tables for the new classes. | Describe the extensions in the <<ISO19115-3>> metadata extension format and extend the ISO metadata XSDs with new types.
+
+| Add values to an enumeration(Consider proposing its addition to S-100 generic metadata via an S-100 maintenance proposal instead of a product-specific extension) | Specialize the relevant S-100 metadata class and override the affected attribute. | Describe the override and new data type in the appropriate tables. | XML schema override in a derived XSD. Ignore any warnings generated by generic constraint-checking rules. Define new constraint-checking rules if necessary.
+
+| Create new metadata codelist elements (expand a codelist) | Expand codelist in diagram(s). (Some codelists like languages may be too long for a UML diagram.) | Add codelist values to codelist table (if any), or document the new values using another method. | Add new value to appropriate codelist and GML dictionary files.
+
+| Create a new metadata codelist to replace the domain of an existing metadata element that has "free text" listed as its domain value (Note: Simply restricting the character strings as described in an earlier row is a simpler solution) | Specialize the relevant S-100 metadata class and override the affected attribute. Add a codelist UML element documenting the codelist. | Document the specialization and new codelist in appropriate tables. | XML schema override in a derived XSD. Ignore any warnings generated by generic constraint-checking rules. Define new constraint-checking rules if necessary.Add new codelist to appropriate codelist and GML dictionary files.
+
+| No value for a mandatory attribute | None. | Specify that the mandatory attribute must be nilled or assigned one of the allowed values as a fixed default. | Rule to check the value.
+|===
+
+Product Specifications should not clone and rename classes, attributes, and
+enumerations defined in the generic model, but instead extend the generic model as
+needed. This requirement helps keep product-specific and generic S-100 metadata
+harmonized as both S-100 and the Product Specifications evolve over successive
+versions. Cloning and renaming classes and attributes will result in different
+branches of metadata. The divergence of metadata branches will increase as both
+S-100 and Product Specifications evolve over successive versions. One consequence
+will be a need for implementations to have independent product-specific metadata
+processing modules. This situation would be undesirable for products that are
+processed by the same application (such as generic viewers, ECDIS, or ECS).
+
+A typical Product Specification Exchange Catalogue UML diagram is reproduced in
+<<fig-B-12-2>> below. Compare to <<fig-B-12-1>>, noting the omission of attributes
+for vertical and sounding datum from dataset discovery metadata and restrictions of
+support file format and data format enumerations.
+
+[[fig-B-12-2]]
+.Example Exchange Catalogue metadata classes for S-127 (Marine Traffic Management)
+image::img25.png[]
+
+[[cls-B-12.1.3]]
+==== Extensions in ISO metadata files
+
+<<S100,part="4a",clause="4a-5.6.5">> specifies how extensions must be documented.
+This specification is derived from the ISO Specification.
+
+[[cls-B-12.1.4]]
+==== Data protection, authentication and encryption
+
+The purpose of data protection in S-100 is threefold:
+
+. Piracy protection: To prevent unauthorized use of data by encrypting the product
+information.
+. Selective access: To restrict access to only the products for which a customer has
+acquired a license.
+. Authentication: To provide assurance that the products were actually created and
+distributed by the producers and distributors who are identified as such in the
+product package or datasets.
+
+Piracy protection and selective access are achieved by encrypting the products and
+providing data permits to decrypt them. Data permits have an expiration date to
+enable access to the products for a licensed period. Authentication is provided by
+means of digital signatures applied to the product files. Selective access to
+individual products is supported by providing users with a licensed set of data
+permits. The license is created using a unique hardware identifier of the target
+system and is unique to each Data Client. Consequently, licenses cannot be exchanged
+between individual Data Clients.
+
+===== Application of protection measures
+
+Product Specifications should specify whether datasets must, must not, or may be
+encrypted using the S-100 recommended security scheme, which utilizes the
+_dataProtection_ attribute of *S100_DatasetDiscoveryMetadata*. If this Boolean
+attribute is set to TRUE the co-attribute _protectionScheme_ must also be assigned a
+value from the enumeration of security schemes (*S100_ProtectionScheme*). S-100 at
+present defines only one recommended security scheme, which is described in
+<<S100,part=15>>.
+
+===== Digital signatures
+
+<<S100,part="4a">> mandates digital signatures for datasets and catalogues in
+exchange sets. For support files, digital signatures are allowed but optional.
+Product Specification authors should therefore specify which support files must,
+must not, or may be signed. Signing datasets is independent of whether the
+recommended security scheme is applied to the dataset.
+
+The digital signature method is encoded in attribute _digitalSignatureReference_.
+There is also an attribute _digitalSignature_ for encoding the digital signature
+itself. These attributes are present in dataset discovery metadata, catalogue
+metadata and support file discovery metadata (classes
+*S100_DatasetDiscoveryMetadata*, *S100_ExchangeCatalogue*, and
+*S100_SupportFileDiscoveryMetadata*). The structure of the digital signature is
+specified in <<S100,part=15>>. <<S100,part="4a">> is quite permissive as to the
+format, allowing either well-formed XML (one or more XML elements from an
+unspecified schema) or a character string (for example base64 encoded signature).
+
+===== Compression and archive format
+
+Compression of data products as used in <<S100,part="4a">> and <<S100,part=15>>
+includes specification of the archive format as well as the actual file compression
+method. In S-100 Edition 4.0.0 there is only one archive format (ZIP) and only one
+allowed compression method (DEFLATE). Compression requires packing into an archive.
+Product Specification authors must specify whether an exchange set must, must not,
+or may be compressed by specifying appropriate constraints on the _compressionFlag_
+metadata attribute in Exchange Catalogues. Further information about archive format
+and compression method is provided in <<S100,part=15,clause="15-5">>. S-100 Edition
+4.0.0 provides for Exchange Catalogues to have only one instance each of the
+_compressionFlag_ attribute, which therefore applies to all files in the exchange
+set (that is, after compression, there will be only one ZIP archive which contains
+all data files, support files, and catalogues in the exchange set, with the DEFLATE
+compression method applied to all{blank}footnote:[Some Zip implementations may check
+whether the compression method actually produces a smaller file, and if not, store
+the original instead. It may be possible to force compression even if the file size
+is not reduced.].
+
+Product Specification authors should note that an exchange set may contain other
+exchange sets. Each included exchange set can be treated as an individual item for
+compression purposes (that is, packed into a ZIP archive or not), but they will all
+be packed into the archive of the overall container exchange set, either as a folder
+hierarchy or single-file ZIP archives, depending on whether they are individually
+compressed.
+
+The encryption and digital signature features of ZIP are not used.
+
+[[cls-B-12.1.5]]
+==== Metadata for imagery and gridded data
+
+Exchange set metadata for Product Specifications dealing with imagery and gridded
+information is the same as for ordinary vector datasets
+(<<cls-B-12.1.1;to!cls-B-12.1.4>>), extended with additional metadata elements and
+attributes specific to imagery or gridded data. <<S100,part="4b">> describes the
+additional metadata elements, which are defined in detail in <<ISO19115-2>>.
+
+The Exchange Catalogue for such products will be as for vector data products. As for
+vector data, the Product Specification team may define additional product-specific
+metadata elements and attributes in conformance with
+<<S100,locality:appendix="4a-E">>. ISO-defined elements and attributes should be in
+the ISO metadata file.
+
+[[cls-B-12.1.6]]
+==== Embedded metadata
+
+Certain metadata may be embedded in dataset headers (<<ISO8211>> and GML formats --
+<<S100,part="10a">> and <<S100,part="10b">>) or defined attributes and groups (HDF5
+format -- <<S100,part="10c">>). While specifying embedded metadata is up to
+individual Product Specifications, this guideline recommends that only metadata
+considered essential to identifying and reading the dataset should be embedded.
+Examples are dataset name, persistent global identifier and MRN (if any); as well as
+bounding box, number of objects of each type and CRS identification. Gridded data
+products may encode spatial representation information such as grid spacing and grid
+bounding box as metadata for individual features. Gridded data products may also
+encode structural metadata such as a code indicating the type of grid (regular,
+irregular, etc.).
+
+=== Metadata for services
+
+This section describes metadata for products that are delivered as services.
+
+==== Generic metadata for services
+
+Generic metadata for services is a work in progress. <<S100,part="4a">> defines a
+metadata model for services which conforms to the <<ISO19115-1>> / <<ISO19115-2>> model.
+<<S100,part=14>> defines service metadata differently (*S100_ServiceMetaData* --
+<<S100,part=14,clause="14-8.1.1">>). It is left to Product Specifications to
+determine if servers need to supply service identification metadata in the sense of
+the underlying ISO standards (reproduced in <<S100,figure="4a-A-2">>).
+
+Product Specifications needing to define service metadata (identifying and
+describing the service itself) should use or extend the *SV_ServiceIdentification*
+class in <<S100,figure="4a-2">>. Any extensions or restrictions should conform to
+the ISO rules as described in <<S100,part="4a",locality:appendix="4a-E">>.
+
+==== Use of the IHO S-100 metadata model and schemas
+
+<<S100,part=14,clause="14-9.1.3">> specifies a _GetMetaData()_ operation with
+_CharacterString_ return parameter _exchangeSet_ defined as "The exchange set
+describing the datasets". It is not clear at this time whether this is the metadata
+defined in <<S100,part=14,clause="14-8">> or the Exchange Catalogue of
+<<S100,part=4a,figure="4a-D-4">>. This can be considered *payload metadata*
+(metadata describing the transferred information) to distinguish it from metadata
+that describes the service itself.
+
+If Product Specifications need to define a subset and/or extension of the S-100
+Exchange Catalogue to describe payload metadata, they should use the same methods
+specified in <<S100,part="4a/4b">> and <<cls-B-12.1>> of this Guidance. Note that
+these sections require conformance to the ISO rules described in
+<<S100,part="4a",locality:appendix="4a-E">>.
+
+==== Data protection, authentication and encryption
+
+Many of the data protection, authentication and encryption provisions of
+<<S100,part=15>> should also apply to services, but details and implementation
+constraints will differ. For example, a data product may create its transfer package
+using a format other than ZIP; and the connection protocol may need to be secure
+(for example HTTPS rather than HTTP). Product Specification teams which need to use
+security schemes in service transfer modes are encouraged to use or adapt
+<<S100,part=15>> and report on their experiences.
+
+==== Embedded metadata
+
+The considerations are similar as for embedded metadata described in
+<<cls-B-12.1.6>>. Additional considerations may arise from the transfer mode; for
+example, giving greater importance to minimizing data volume. Product Specification
+teams are encouraged to use or adapt the embedded metadata principles in
+<<cls-B-12.1.6>> and the methods and constraints of the data format which is used
+(<<ISO8211>>, GML, HDF5, or other format) and report on their experiences.

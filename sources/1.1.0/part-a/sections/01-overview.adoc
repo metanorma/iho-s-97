@@ -1,0 +1,17 @@
+== Overview
+
+S-100, the Universal Hydrographic Data Model, is a hydrographic geospatial data
+standard that can support a wide variety of hydrographic-related digital data
+sources; and is fully aligned with mainstream international geospatial standards, in
+particular the ISO 19000 series of geographic standards. This alignment enables
+easier integration of hydrographic data and applications into geospatial solutions.
+S-100 is inherently more flexible than S-57 and makes provision for such things as
+the use of imagery and gridded data types, enhanced metadata and multiple encoding
+formats. It also provides a more flexible and dynamic maintenance regime for
+features, attributes and portrayal via a dedicated online Registry. S-100 provides a
+framework of components that enables the building of standardized Product
+Specifications for the modeling of hydrographic data, thus providing true
+interoperability between different data standards and systems.
+
+S-97 is a Guideline intended for developers and maintainers of Product Specifications
+that utilize the IHO framework standard S-100 (Universal Hydrographic Data Model).

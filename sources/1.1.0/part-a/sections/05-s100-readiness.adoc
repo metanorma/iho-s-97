@@ -1,0 +1,163 @@
+== S-100 Readiness Levels
+
+A key issue when developing new Product Specifications within the S-100 framework is
+the ability to communicate to the wider community the completeness of the
+Specification and its readiness for operational use. This is also further complicated
+by the many different types of operational settings for Product Specifications under
+development, and not all of which require all S-100 components; thus the concept of
+S-100 Readiness Levels has been adopted by the Hydrographic Services and Standards
+Committee (HSSC).
+
+The readiness levels concept shows a progression from an idea to regular use, and
+allows the IHO community to gain a clear understanding of whether the Specification
+is ready for endorsement and approval. This will also allow other non-IHO stakeholder
+organizations who are leveraging the S-100 framework to gauge when their Product
+Specifications meet an appropriate readiness level for transition to live operation.
+
+The following table lists the prerequisite components to meet each S-100 Readiness
+Level. Note that it is required that all S-100-based Product Specifications conform
+to S-100 and both the Feature Catalogue and the Portrayal Catalogue must use the
+published S-100 infrastructure and process for creation and maintenance.
+
+[[table1]]
+.S-100 Readiness Levels
+[cols="<,^.^,^.^,^.^,^.^,^.^",options=header]
+|===
+| Required Product Specification component | Level 1
+
+v1.0.0 | Level 2
+
+v1-2.0.0 | Level 3
+
+>v2.0.0 | Level 4
+
+>v2.0.0 | Level 5
+
+>v2.0.0
+
+| Main Document +
+(Defines the relevant parts of S-100 that are required for the Product Specification)
+| X
+| X
+| X
+| X
+| X
+
+| _A Default Encoding_ | X | X | X | X | X
+
+| S-100 Compliant Feature Catalogue
+| X +
+(draft)
+| X +
+(updated)
+| X +
+(final, from IHO GI Registry)
+| X
+| X
+
+| _Data Classification and Encoding Guide_
+| X +
+(draft)
+| X
+| X +
+(final)
+| X
+| X
+
+| S-100 Compliant Portrayal Catalogue
+
+NOTE: Not every Specification will need a Portrayal Catalogue -- this should be determined as part of the development process and stakeholder feedback.
+|
+| X
+| X
+| X
+| X
+
+| Data Quality Checks
+|
+| X
+| X
+| X
+| X
+
+| Test Data Sets
+|
+| X
+| X
+| X
+| X
+
+| _Data Validation (and test datasets)_
+|
+| _X_
+| _X_
+| _X_
+| _X_
+
+| Exchange Catalogue
+|
+| X
+| X
+| X
+| X
+
+| Encryption / Digital Signatures
+|
+|
+| X
+| X
+| X
+
+| Interoperability
+|
+|
+| _X{blank}footnote:t1[ECDIS only]_ +
+(draft)
+| X{blank}footnote:t1[] +
+(tested)
+| X{blank}footnote:t1[]
+
+| Alerts and Indications
+|
+|
+|
+| X{blank}footnote:t1[]
+| X{blank}footnote:t1[]
+
+| Operational data
+|
+|
+|
+|
+| X
+|===
+
+Level 1: Contains the minimum amount of components needed to commence the development
+of test datasets and system prototypes. This should be considered the final stage of
+development before demonstration begins, and would typically be Edition 1.0.0 of a
+Product Specification.
+
+Level 2: Includes additional items such as data quality checks and test data sets so
+that the Product Specification can be demonstrated in prototype environments. This
+would typically map to Edition 1.n.n - 2.0.0 of a Product Specification. Depending on
+the end-user requirements of the Product Specification, Level 2 can be implemented in
+an operational context. Subsequent S-100 Readiness Levels are then dependent on
+operational requirements of the product within navigation systems.
+
+Level 3: Builds on Level 2 and includes a fully featured and documented exchange
+catalogue and (optionally) an encryption layer for the data and implementing system.
+At this level, prototype systems, products or processes should be demonstrated in a
+real-world environment.
+
+Level 4: Intended only for use in vessel navigation systems such as ECS and ECDIS. At
+this level, the developer of the Product Specification needs to ensure that
+documented considerations have been given to interoperability via S-98 and alerts and
+indications functionality. At this level, there should be a baselined and compliant
+system, process or product that is shown to operate or function as expected.
+
+Level 5: System, process or product is deployed and used routinely. At this stage,
+data and compliant systems are readily available for operational use. This stage
+includes functionality for a machine-based check of up-to-datedness (that is,
+automatic warnings and Update Status Reports). The functionality required for
+up-to-datedness could be provided within individual Product Specifications or through
+the S-128 Catalogue of Nautical Products.

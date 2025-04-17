@@ -1,0 +1,520 @@
+== Develop data model (Application Schema)
+
+=== Introduction
+
+The Application Schema as defined in S-100 is usually synonymous with "domain
+model". It is a specification of the classes, attributes, and relationships relevant
+to the data product.
+
+A Product Specification will include only a single Application Schema (which may be
+broken up into multiple diagrams). However, in theory a Product Specification that
+describes different scopes may need to distinguish Application Schema for different
+scopes -- for example a product that includes both vector and coverage data might
+need two Application Schemas.
+
+[TIP]
+====
+To minimize complexity, Product Specification developers should try to avoid
+defining multiple Application Schemas.
+
+Note that this does not prevent a single Application Schema from being depicted
+using multiple diagrams.
+====
+
+The Application Schema should describe only features, information types, their
+attributes and relationships that are part of the data product. Any other classes,
+constraints, or elements that are used to further understand the data product and
+its role in applications, services or service portfolios should be distinguished
+from the Application Schema and documented separately in the Product Specification.
+
+Model developers should try to limit the number of model elements while still
+allowing implementations to make appropriate (conceptually appropriate, logically
+appropriate, consistent, correct and performance-based) distinctions.
+
+The principles of data normalization learned in relational database design should be
+kept in mind; but model developers should also note that an S-100-based domain model
+and Application Schema are feature-attribute-relationship models and not database
+designs.
+
+=== Steps in model development
+
+. Determine whether the data product is coverage or vector data. Coverage data is
+characterized by values of characteristics distributed over an area or areas, while
+vector data is characterized by localized regions (points, and/or areas) that
+possess boundaries and do not exhibit internal variation in characteristic values
+(or where such internal variations can be ignored).
+. Identify the concepts in the application domain. This will involve reviewing the
+source material to identify important features and information in the domain which
+will be useful to end-users. Source material will include the sample texts
+identified in the initiation phase and, if available, documentation and data
+dictionaries of relevant applications, requirements for existing applications,
+related standards and circulars from IEC, IMO, IALA, etc.
+. Search for existing concepts using key words (classes, attributes and
+relationships) in the IHO GI Registry which can be re-used.
+. Develop new concepts only for those that do not yet exist in the IHO GI Registry.
+This will involve examining the source material mentioned earlier in more detail to
+pin down concepts and their definitions. The process for submitting proposals is
+described in S-99.
+. Define the classes and attributes that describe the domain and are relevant to the
+data product. If classes, attributes and codelists/enumerations are already defined
+in the IHO GI Registry or existing Product Specifications they can be reused. If
+not, the Project Team will need to develop and define classes and attributes,
+including listed values for enumeration and codelist types.
+. Define the relationships between the classes. Relationships should be defined in
+order to capture those that exist in the real world and to make links which are
+useful for application processing. Both reasons will often apply.
++
+--
+[example]
+A structure/equipment relationship between classes modelling structure
+objects and classes modelling equipment mounted on the structure.
+
+[example]
+A contact information relationship between classes modelling pilot service
+areas and contact information for pilot services available in that area.
+--
+. Specify any constraints applicable to the classes, attributes, and relationships.
+Examples are constraints requiring conditional encoding of attributes, exclusive
+relationships (that is, when an instance is allowed to participate in only one of
+multiple possible relationships), etc. Generally, structural restrictions are
+depicted in UML class diagrams, while value restrictions on individual attributes
+are not (to reduce clutter). Whether depicted or not, any restrictions should be
+enforced and documented in the appropriate section or artefact of the Product
+Specification.
+. Prepare one or more UML class diagrams describing the domain model. Recommended
+practices for S-100 models are based on ISO TC211 recommended practices as modified
+by <<cls-B-7.6>> of this document.
+. Prepare supporting text explaining the overall structure of the Application
+Schema; and for each diagram explaining the purpose of each diagram and the
+relationships between the classes. In addition, explain any additional subtleties of
+the classes or their relationships that may not be obvious or should be specially
+noted. This text should not be a listing of classes, attributes, and relationships;
+but instead should clarify the purpose of the model depicted in the diagram by
+explaining what domain phenomenon the diagram captures and how the classes and
+relationships express it. For example, from S-122:
++
+--
+[quote]
+____
+Some protected areas require reports to be filed with authorities when certain
+events occur such as an animal strike or pollution event. Other areas require
+reporting to specified authorities when entering, leaving, etc. These requirements
+are modelled by association of a ShipReport class to the Authority class. The area
+in question is modelled by a feature of the requisite type; for example., a
+MarineProtectedArea or VesselTrafficServiceArea, as described in
+<<S122,clause="6.2.1.3">>. Any time requirements or constraints on the filing of the
+report are described by the noticeTime attribute, with explanations, if any provided
+in text form in the textContent attribute of ShipReport. Required reporting formats,
+if necessary to be included, are also described in the textContent attribute.
+[Figure] shows the model elements that are used to carry these conditions, note that
+not all permitted associations or roles are included, in order to reduce clutter.
+____
+--
+
+[[fig-B-7-1]]
+.UML diagram depicting part of the S-122 Application Schema (from S-122)
+image::img18.png[]
+
+=== Relationship to the General Feature Model
+
+The General Feature Model is a conceptual model for features, their characteristics
+and associations; and acts as the basis for the structure of Feature Catalogues.
+Feature and information types in the Application Schema must be realizations of the
+meta-classes S100_GF_FeatureType and S100_GF_InformationType from the S-100 General
+Feature Model (GFM) (<<S100,part=3,figure="3-1">>); or subclasses of a class that
+realizes the appropriate meta-class. Attributes must be realizations of the thematic
+or spatial attribute meta-classes defined in <<S100,part=3,figure="3-2">>; or
+subclasses of a realization. Product Specifications may define local root classes
+from which all their feature and information classes are derived, as shown in
+<<fig-B-7-2>> below; or may realize feature and information type classes from
+S100_GF_FeatureType and S100_InformationType.
+
+[[fig-B-7-2]]
+.Example of realization from S-100 GFM
+image::img19.png[]
+
+=== Rules for Application Schemas
+
+S-100 rules for Application Schemas are based on <<ISO19109>>. The S-100 rules for
+Application Schemas are defined in <<S100,part=3,clause="3-6">> and
+<<S100,part=3,clause="3-7">>.
+
+==== Application Schemas for vector data
+
+Application Schemas for vector data should follow the guidelines as described below.
+<<S100,part=3,clause="3-6">> describes the rules for Applications Schemas in greater
+technical detail:
+
+* Features, information types, and complex attributes must be modelled as classes.
+* Relationships are modelled by UML associations or association classes (the latter
+only when the association itself is characterized by attributes -- see
+<<cls-B-7.5.4.2>> in this document).
+* Attributes are modelled by UML attributes in the appropriate class.
+* Associations must be labelled (have association names). Navigable association ends
+must also be labelled (should have role names).
++
+--
+NOTE: Diagrams may suppress depiction of labels for clarity and to reduce clutter.
+Labels may be defined by specific rules given in the Product Specification text
+instead of the UML diagram (for example a Product Specification is allowed to
+'label' an association end using a statement like "The role of _FeatureX_ in all its
+associations is __theFeatureX__" (see <<S100,part=3,clause="3-5.4.5">> on default
+names for association ends).
+--
+* Spatial attributes must be modelled either as attributes with data type one or
+more (that is, union) of the allowed spatial types in the spatial schema, or an
+association between the class that represents a feature and one of the spatial
+objects defined in the spatial schema.
+* Enumeration types and their listed values must be modelled by UML enumerations;
+codelists must be modelled as UML classes with tags specified in
+<<S100,part=3,clause="3-6.7">>.
+* Standard schemas (for example the spatial schema, Feature Catalogue schema) must
+not be extended within Application Schemas.
+* All classes used within an Application Schema for data transfer shall be
+instantiable. This implies that the integrated class must not be stereotyped
+&laquo;interface&raquo;.
+* A UML Application Schema must be described within a UML package, which must carry
+the name of the Application Schema and the version stated in the documentation of
+the package.
+
+==== Application Schemas for coverage data
+
+The rules for Application Schemas for coverage data are described in
+<<S100,part=3,clause="3-7">>; and <<S100,part=8>>.
+
+The rules are similar to the rules for vector data, with the following difference:
+
+* Spatial types for coverage features are modelled by the appropriate point set,
+grid, or TIN type defined in <<S100,part=8>>.
+
+==== Additional rules
+
+Names of features and information types must use their camel case codes.
+
+Vector feature classes must use the stereotype &laquo;FeatureType&raquo; and information
+classes must use the stereotype &laquo;InformationType&raquo;. A stereotype allows designers
+to extend the UML model by creating new model elements.
+
+Coverage _type_ elements (describing the coverage geometry) compliant to S-100
+should use the appropriate stereotype from <<S100,part=8>>; and Application Schemas for coverage data may depict the data attributes by defining a &laquo;FeatureType&raquo;
+element with the thematic data attributes and associating it with the coverage type
+element.
+
+[[fig-B-7-3]]
+.Example of coverage feature and type elements conforming to S-100 (from S-111)
+image::img20.png[]
+
+If necessary, Product Specifications may use domain-specific stereotypes in addition
+to the standard stereotypes.
+
+Abstract classes are indicated by italicizing the class name (Enterprise Architect
+does this automatically if the "Abstract" checkbox is checked in the UI).
+
+S-100 states that "the use of multiple inheritance shall be minimized, because it
+tends to increase model complexity". Multiple inheritance is the situation where a
+class has more than one immediate superclass. Application Schema developers should
+note that multiple inheritance contravenes the S-100 GFM, which allows feature and
+information types to have at most one super-type.
+
+=== Other conventions and recommendations
+
+==== Reuse and harmonization
+
+Before new elements are defined the IHO GI Registry should be checked for existing
+elements that can be re-used. The following should be also considered:
+
+* Features, information types, and attributes should be re-used whenever possible.
+* Structure and associations should be harmonized with S-101 and other existing
+related or complementary products.
+* Defining similar but slightly different items should be avoided unless absolutely
+essential.
+* Extensions such as additional listed values in an enumeration can be proposed to
+the IHO GI Registry, but conflicts such as different definitions for the same terms
+must be avoided if at all possible.
+* Existing items may be reused with the addition of product specific constraints,
+such as limiting the set of allowed values for an enumeration or codelist type. Such
+harmonization includes, for example, re-using complex attributes defined in other
+Product Specifications with restrictions that exclude some of their sub-attributes.
+
+==== Features and information types
+
+A feature class is "an abstract representation of real-world phenomena"
+(<<S100,part=3,clause="3-5.1.1">>). The Application Schema should define a feature
+class for describing:
+
+. A concept whose instances have a spatial (geographic) location. Such a class
+represents a *geographic* feature.
+. A concept whose instances are collections of the above. The collection may consist
+of instances of one such class or several such classes. Depending on the nature of
+the collection, the concept will be either an *aggregation* feature or a
+*composition* feature. In Application Schemas they are treated like geographic
+features but may or may not have a spatial attribute.
+. Cartographic information (such as feature names, labels, compass roses, legends)
+that are intended to be positioned at a specified location (or re-positioned from
+its default position relative to a feature) to avoid obscuring other features.
+Though not a representation of any real-world phenomenon, such information is also
+modelled as a feature and treated as a feature in the Feature Catalogue. Such
+features are called *cartographic* features. The information to be displayed may be
+encoded in an attribute of the cartographic feature class or identified by reference
+to another feature class.
+. Meta-information or metadata pertaining to all features (or defined subsets or
+defined attributes of features) in a particular area. These are called *meta*
+features.
+
+The S-100 Feature Catalogue model provides a _featureUseType_ element for
+designating feature types as "geographic", "cartographic", or "meta". Aggregation
+and composition feature types are designated as being of "geographic"
+_featureUseType_.
+
+Information types are identifiable objects that can be associated with features or
+other information types, in order to carry information particular to the associated
+objects. Information types may be considered classes that are typically used to
+share information among features and other information types. Information types have
+only thematic attribute properties.
+
+==== Superclasses and subclasses
+
+Defining abstract superclasses is recommended when 3 or more conceptually similar
+classes exist in the model. The similar classes have some of the same attributes or
+relationships; and the allowed values of shared attributes are the same. It is not
+necessary that the classes bind exactly the same sets of attributes or have exactly
+the same relationships.
+
+Subclasses inherit both associations and attributes, unless explicitly overridden.
+While overriding is permitted, it introduces additional complexity in data formats
+and implementations. Instead of overriding, the model should be changed to move the
+attribute or association down in the hierarchy and assign it only to classes where
+its use is permitted.
+
+===== Superclasses versus category attribute
+
+There are different ways of modelling the same item. For example, in order to
+indicate different buoy types, either the subclass approach or the enumeration
+approach (categoryOf) can be used. Both approaches are depicted in <<fig-B-7-4>>.
+
+[[fig-B-7-4]]
+.Illustration of alternative models using category attribute and sibling subclasses
+image::img21.png[]
+
+It is up to the Product Specification development team to determine which approach
+best suits their needs. In order to determine this, consideration should be given to
+the following issues:
+
+. Will either approach result in a significant divergence from some external source?
+. Will the "category attribute" approach cause issues for portrayal because the
+symbols for the different types are presumably different? Or will the subclass
+approach result in unnecessary portrayal rules because the symbols are the same?
+. Will any of the subclasses have its own specific attributes or
+relationships? If so, the sub-class approach is preferable.
+. Are the different categories/subclasses in (or likely to be placed in) different
+viewing groups, or have different drawing order? If so, there is a slight preference
+for making subclasses. (Only "slight" because the portrayal rules and
+Interoperability Catalogue can use attribute values in assigning viewing groups to
+feature instances.
+. If subclasses are used, will that introduce situations where it may be necessary
+to encode coincident objects with different categories? The answer "Yes" suggests a
+preference for the categoryOf... approach.
+. Are the subclasses conceptually very different? "Yes" implies the sub-classes
+approach.
+. Which approach is likely to be compatible with external resources like existing
+databases and implementations?
+. If there are a large number of subtypes, then the categoryOf... approach may be
+preferable because it leads to more compact representations in UML diagrams and more
+compact DCEGs. ("Large" is obviously subjective, but will generally between 5 and 9
+based on research into human cognitive psychology and probable implementation
+methods in user interfaces -- there will be variations dependent on concept semantics
+and similarities.)
+. Overall complexity of the Application Schema and Feature Catalogue. Sibling
+subclasses of features (or information types) generate more artefacts and
+documentation than a category attribute. They certainly mean an additional table for
+each subclass in the DCEG; an additional XML element for each in the Feature
+Catalogue; and a box in the UML diagram Application Schema for each class. To that
+extent sibling subclasses are a greater cognitive burden on encoders and developers.
+
+==== Associations and association classes
+
+===== Navigability, source and target
+
+Association navigability should be indicated if the association is navigable in only
+one direction; that is, the model designer expects applications to access one object
+from the other, but not vice versa. Feature/feature and information/information
+associations are usually navigable in both directions, while feature/information
+associations must be navigable from the feature end but are not required to be
+modelled as navigable in the other direction. UML regards navigability information
+in UML diagrams as hints to implementations rather than hard requirements; and
+implementations and data formats are free to implement navigability in the most
+efficient manner.
+
+Unidirectional navigability will normally also determine the source and target of
+the association.
+
+An association's source and target should be grammatically and semantically
+compatible with the name and definition of the association; for example, for the
+association Person/subscribes/Magazine the source should be Person and the target
+Magazine.
+
+For feature/feature associations both ends should be named; for feature/information
+associations the information end should be named and the feature end may be named.
+This is an S-100 requirement, not a UML requirement.
+
+[[cls-B-7.5.4.2]]
+===== Association classes
+
+Association classes are a means of adding parameters (characteristics) to
+associations, rather than to the classes at the end of an association. An attribute
+of the association class characterizes the relationship between the classes at the
+ends of the association.
+
+The use case for association classes is basically "whenever a relationship is
+characterized by one or more attributes".
+
+[example]
+A specified set of vessels is COVERED by a regulation and another set of
+vessels is EXEMPT from the regulation. The sets of vessels are described by an
+information type class; the regulation by another information type class; and the
+relationship between them by an association class which has an attribute
+characterizing the relationship as inclusion or exclusion (of the specified subset
+in the specific regulation). This relationship is modelled by the *InclusionType*
+association class in <<fig-B-7-5>> below.
+
+[example]
+Vessels with specified cargo and dimensions must use a specified pilot
+boarding place; vessels of smaller dimensions are recommended to use the boarding
+place; and warships are exempt from using the pilot boarding place. The sets of
+vessels are described by an information type class; the pilot boarding place is a
+feature class; and the relationship between them by an association class which has
+an attribute stating whether the specified set of vessels is
+required/recommended/exempt from use of the pilot boarding place. This relationship
+is modelled by the *PermissionType* association class in <<fig-B-7-5>> below.
+
+[[fig-B-7-5]]
+.Examples of modelling with association classes
+image::img22.png[]
+
+==== Attributes in general
+
+Certain attributes may use the same set of listed values as other attributes. For
+example, an enumeration for compass points may be shared by the attribute
+*windDirectionCompassPoint*, which is the direction for where wind is coming from;
+and *directionOfMovement*, which is the attribute describing where a weather system
+is going toward. At present this can be simply handled in the attribute's definition.
+
+Complex and spatial attributes can be modelled as either named attributes in the UML
+model class element with a type corresponding to the spatial primitive or the name
+of the complex attribute; or alternatively, separate model elements linked to
+feature/information class by an association (ordinary association for spatial type,
+composition for complex attributes). The two methods are illustrated in
+<<fig-B-7-6>> below. The second method is not suitable for complex models due to the
+additional boxes and association lines.
+
+[[fig-B-7-6]]
+.Methods of representing complex attribute bindings
+image::img23.png[]
+
+==== Codelist and enumeration attributes
+
+Codelists should be used only when an enumeration is either unusable or inefficient
+(for example, if the full list of values is not known to the Product Specification
+authors or the list of allowed values is long, volatile, controlled by another
+authority and/or shared by multiple domains).
+
+Individual members of a codelist or enumeration ("listed values") are generally
+meaningful only in a given context (or "container"), which is a specific (named)
+enumeration. The context corresponds to an attribute concept.
+
+==== Labels and definitions for listed values
+
+Labels should be short but informative, keeping in mind that both end-users and
+encoders may leverage them. Implementers of end-user display and production tools
+are likely to use listed value labels as 'tooltips' or explanatory text, or as the
+'display text' of the attribute numeric code value for end-users. End-users are more
+likely to see labels than full definitions due to other demands on their attention
+and screen display constraints.
+
+==== Data types
+
+S-100 defines a set of primitive and derived data types in a Table included in
+<<S100,part="2a",clause="2a-4-10">>. Attribute values of thematic attributes should
+be one of the types listed in this Table. If restrictions on the values are needed,
+Product Specifications may define constraints, if possible encoded using one or more
+of the elements in S100_CD_Constraints (length, range, pattern, and precision).
+Constraints which cannot be encoded must be documented as a 'Remark' or note.
+
+The data types defined in S-100 can in principle be extended by Application Schemas
+but if this is done the Product Specification must define the extended data type in
+terms of the predefined data types in S-100 and use the predefined data type in the
+Feature Catalogue. Data formats may use their equivalent built-in types which are
+defined in the underlying format standard (for example HDF5 and XML built-in types)
+in order to leverage standard data validation software, provided the equivalence is
+documented either in the Product Specification or the underlying format standard.
+
+==== Codes for listed values
+
+Numeric codes _must_ be positive integers; and _should_ be in the range 1-254 if
+possible (to allow data formats and implementations to use compact representations --
+however codes up to 65535 are allowed). Codes used for retired listed values can
+only be used if the proposal is a revision (supersession) of the retired listed
+value.
+
+The IHO GI Registry also allows specification of alias and camel case codes for
+listed values. The camel case field should be completed with a camel case code
+derived from the label, beginning with a lowercase letter. The guidelines for camel
+case codes are specified in <<S99,annex="A">>.
+
+[[cls-B-7.6]]
+=== Recommended practices
+
+==== Reviews of model elements and structure
+
+Models should be reviewed at regular intervals while under development, with reviews
+involving domain experts as well as information modelling experts.
+
+==== Diagram layout
+
+Common 'best practices' for layout of UML diagrams should be followed. In
+particular, diagrams should not contain too many elements; should minimize line
+crossings; and use vertical layouts for hierarchies (or left-right horizontal
+layouts if a vertical layout does not work). Lines representing associations should
+minimize the use of curved segments.
+
+==== Colour coding of model elements
+
+Colour coding should be used to distinguish diagram elements for features;
+information types; enumerations and codelists; complex attributes; association
+classes; and constraints and notes. Abstract types should be indicated by darker
+shades.
+
+<<fig-B-7-1>> and <<fig-B-7-5>> illustrate the use of colour coding to depict
+different kinds of UML elements. Compare the shades of the non-abstract feature and
+information classes in these figures to the abstract feature and information classes
+in <<fig-B-7-2>>.
+
+S-100 departs from ISO TC211 recommendations for the use of black-and-white-only UML
+diagrams in order to distinguish between feature and information types (the concept
+of information type is unique to S-100).
+
+==== Documentation tables
+
+These may be formatted like the UML schema documentation tables in S-100 or
+generated by the UML software. Whichever method is used, the documentation must
+document the classes, attributes, enumeration and codelist types; and associations
+in the Application Schema, including names, definitions, multiplicities, data types
+and roles.
+
+==== Recommended software tools
+
+The S100 Working group recommend using Enterprise Architect(TM) to develop the UML
+Application Schema(s). Other UML tools or special templates in off-the-shelf editors
+may also be used but are likely to have minor differences in UML notations which
+will need to be adjusted or explained in the Product Specification.
+
+XML data including Feature Catalogues and metadata is easier to view in open-source
+or COTS XML software rather than ordinary text editors.
+
+==== Identification of models
+
+The identification of each Application Schema must include a name and a version. If
+there is only one Application Schema in the Product Specification, this
+identification is implicit in the name and version of the Product Specification.
+Product Specifications with more than one Application Schema must identify each,
+potentially by associating it with a scope.

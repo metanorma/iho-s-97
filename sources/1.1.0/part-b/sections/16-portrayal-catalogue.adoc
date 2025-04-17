@@ -1,0 +1,4 @@
+== Portrayal Catalogue
+
+An IHO Portrayal Catalogue Builder is available to Product Specification developers
+in the Help and Guidance/Repository section of the IHO GI Registry.
