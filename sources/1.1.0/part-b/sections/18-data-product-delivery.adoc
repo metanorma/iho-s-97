@@ -1,0 +1,97 @@
+[[cls-B-18]]
+== Data product delivery
+
+=== Delivery content and structure
+
+Define the content and structure of delivery packages: Exchange sets, messages, or
+web services.
+
+==== Exchange sets
+
+Exchange set structure should be defined, either by using the structural diagram
+from <<S100,locality:appendix="4a-D">> (reproduced in <<fig-B-18-1>> below) as is;
+or restricting the allowed components; or defining extensions of the individual
+components. If there is internal structure in the exchange sets (for example folders
+and sub-folders), determine the required layout and naming conventions. Determine
+how the exchange set as a whole is packaged (for example ordinary folders, zip file,
+etc.).
+
+[[fig-B-18-1]]
+.Prototype exchange set structure
+image::img26.png[]
+
+Determine what naming conventions, if any, must apply to individual components of
+the exchange set - dataset files, exchange sets and support files. Naming
+conventions are generally not needed for message-based or service modes of data
+delivery, but a unique identifier will generally be needed for each message or
+service transaction.
+
+==== Services
+
+<<S100,part=14>> describes three types of communication:
+
+* Session oriented communication (<<S100,part=14,clause="14-4">>) - point-to-point
+connections between client and server described by an interaction model that
+describes the life span of a session (initiation, maintenance and termination of the
+session).
+* Session-less interactive communication (<<S100,part=14,clause="14-5">>) - an
+encapsulation of all relevant information within a request, based on which the
+server formulates an appropriate response.
+* Message streams (<<S100,part=14,clause="14-6">>) - a unidirectional flow of
+messages containing well-defined sets of data.
+
+For message and web service modes of delivery, specify the container format and
+packaging; and specify the transfer protocol (for example REST (Representational
+state transfer), SOAP (Simple Object Access Protocol)) and packaging (for example
+WSDL (Web Services Delivery Language), WFS (Web Feature Service)). <<S100,part=14>>
+currently permits three service technologies: SOAP, REST and CORBA.
+
+[Developing specifications for online services will be included in a later version
+of this document, pending more experience with <<S100,part=14>>.]
+
+=== Dataset updates
+
+==== General considerations for updates
+
+Define the conditions and mechanisms for data updates, specifically:
+
+* Update cycles -- how frequently data must be updated; whether updates are issued on
+a regular cycle, as-needed, or a combination of both;
+* How long each dataset is valid and how validity periods will be indicated;
+* Mechanisms for cancellation, replacement and reissue of datasets;
+* Metadata for updates;
+* Types of updates -- whether the data product requires incremental, whole-dataset
+replacement, irregular or cumulative updates; and
+* Criteria for determining when datasets must be replaced by new datasets,
+superseded, reissued, updated and cancelled.
+
+==== Format-specific update considerations
+
+ISO 8211: <<S100,part="10a">> describes update mechanisms for ISO 8211 datasets.
+Each Product Specification must define the structure of update datasets.
+
+GML: Replacement of whole objects is the recommended method, but there are XML
+specifications that allow update of individual attributes. (Details will be included
+in a later version of this document, pending further discussions.)
+
+HDF5: Feature (coverage) can be updated in its entirety or in part (the update can
+be a sub-grid).
+
+=== Supporting information
+
+Describe how any auxiliary content is delivered either with or as an adjunct to
+data. S-100 provides for 'support files' to be included in exchange sets. Support
+files can be graphic or text information files referenced by dataset objects, or
+other files such as dictionaries and catalogues (including Feature or Portrayal
+Catalogues). Define allowed file formats and naming conventions for support files.
+
+Note that since Feature and Portrayal Catalogues are shared by all datasets
+conforming to a specific version of a Product Specification, it will generally be
+more efficient to deliver Feature and Portrayal Catalogues once rather than with
+every exchange set. Possible methods of such special deliveries have not been
+standardized yet and are left to Product Specification developers, but may include
+special exchange sets distributed through the usual channels or a centralized means
+such as publication on a web server. If a central distribution mechanism is adopted
+consideration must be given to the possible needs of end users who have only
+infrequent or no access to the distribution hub (for example low-bandwidth or no
+Internet access).

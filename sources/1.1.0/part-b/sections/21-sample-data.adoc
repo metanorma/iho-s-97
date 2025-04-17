@@ -1,0 +1,25 @@
+== Sample data / test datasets
+
+Test data should be created in sufficient quantity to validate the main
+characteristics of the Application Schema. Specifically, the first test dataset
+should contain:
+
+* At least one instance of each kind of feature and information type.
+* A representative set of feature and information associations, preferably at least
+one instance of each named association. (It is not necessary to create an instance
+for each and every pair of object classes which may be linked by an association.)
+* At least one instance of each meta-feature and data quality feature.
+
+At least one update dataset should also be prepared, to validate the update dataset
+format and packaging.
+
+Additional test datasets should test typical data volume, representative data
+capture problems and error cases.
+
+If delivery is intended to be in the form of exchange sets, the test datasets should
+be packaged as complete exchange sets, including sample metadata files. Sample
+packages for other forms of delivery (transactions, messages, web services, etc.)
+should be emulated as realistically as is practical at this stage; that is, setting
+up a web server, service broker, etc for web services should be done if doing so is
+practical but is not an essential requirement (it can and should be done as part of
+the testing stage).

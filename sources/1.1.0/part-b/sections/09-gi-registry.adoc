@@ -1,0 +1,18 @@
+== IHO GI Registry
+
+Procedures for registration are explained in S-99. It is recommended that at least
+one member of the Project Team or Working Group register as a Submitting
+Organization. Submitting Organizations propose changes and additions to the contents
+of Registers. Submitting Organizations will normally represent a recognized body or
+stakeholder group (such as from government, industry, academia and relevant user
+groups). Registered Submitting Organizations may submit proposals for consideration
+under any Domain in a Register. Stakeholders and any other interested parties who do
+not wish to enrol should submit proposals through an existing Submitting
+Organization.
+
+To harmonize with other Product Specifications, developers should propose extensions
+to existing Registry items where possible. For example, propose generalization or
+specialization of an existing element; or additional values in an enumeration or
+codelist type. Restrictions of existing types can become new sub-types rather than
+changes to an already defined type; or it may suffice to define a constraint in the
+Product Specification.

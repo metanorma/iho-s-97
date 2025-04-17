@@ -1,0 +1,85 @@
+== Initiation
+
+The initiation phase consists of the following activities. Except for the first
+(identifying the need) most of the other activities can be done in parallel.
+
+. Identify a need that a data product will fill -- this will normally be the result
+of external circumstances such as definition of a service portfolio;
+application-driven demand for new kinds of information; new legal requirements for
+shipping; IMO decisions; etc.
+. Define the scope of the product -- the subject area, the kind of information it is
+expected to contain; and equally important, what information it will not contain.
+. Determine if existing Product Specifications can be extended. If so, such an
+extension will probably consume less time and effort than developing a new Product
+Specification.
+. Determine sub-areas within the product; that is, the scopes within the Product
+Specification or a new scope for an existing Product Specification.
+. Define constraints -- domain, application, platform, etc.
+. Collect samples of source information. These generally include existing databases;
+and official, unofficial, government and commercial publications -- especially those
+in wide use.
+. Define application use cases.
+. Outline application functionality enabled by the data product.
+. Define delivery modes (transfer set, messages, web services, etc).
+. Obtain approval from the appropriate sponsoring organization.
+. Put together a Project Team.
+
+If the Product Specification development is performed under the umbrella of the IHO
+then the following step also needs to be included in the initiation stage:
+
+Before deciding to include a new S-100-based Product Specification in the HSSC Work
+Program, the following considerations should be taken into account:
+
+. Has the need for the Product Specification proposed been documented?
+. Has a compelling need been demonstrated with detailed examples?
+. Has the Product Specification been considered within the scope of the HSSC?
+. Has the description of the proposed Product Specification sufficiently addressed
+the cost to the IHO and possible legislative and administrative burdens?
+. Has the development duration been considered?
+
+To simplify the above-mentioned decision making process, the Product Specification
+description should provide a set of information beforehand to HSSC for
+consideration, as shown in <<table-B-6-1>> below.
+
+[[table-B-6-1]]
+.Product Specification description template
+[cols=3,options=header]
+|===
+3+.<| Product Specification description
+
+| Action | Description | Comments
+
+| Product Specification number | The intended number for this Product Specification | Keep this section empty until HSSC have assigned a number
+
+| Title
+| The title of the product specification
+|
+
+| Abstract
+a| A brief summary of the Product Specification summarizing:
+
+. the intended use
+. the primary and secondary user
+. the expected functionality
+|
+
+| Product Specification Scope | The overall scope of the Specification | This should include the expected SOURCE(s) of the data. For example: NIPWG publications...a source would be the Coast Pilot/Sailing Directions for S-126 (that way if someone thinks Tide Tables should be here instead of with S-104 it will be listed)
+
+| Justification
+| The reason why this Product Specification should be developed
+|
+
+| Specification Interoperability | Any interoperability with other Product Specifications within the S-100 family | Specify the limits of the Product Specification
+
+| S-98 Applicability | Applicable to S-98 (Yes or No) | S-98 Interoperability Specification in S-100 Navigation Systems
+
+| Cooperation with other HSSC WGs | Specify which WG will be involved to which extend | NCWG: PortrayalDQWG. Specific information on Data Quality
+
+| Budget
+| Statement of budget need and the figur
+a| Is IHO budget needed? Will the development be financed by an external party and to what extent?
+
+There should be general guidelines for how to calculate this...with reasonable values based on reality and evidence
+
+| Schedule | Description of the intended time frame | Or at least the steps to accomplish since this is very difficult to determine
+|===

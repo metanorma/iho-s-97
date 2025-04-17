@@ -1,0 +1,92 @@
+[bibliography]
+== References
+
+* [[[ISO8211,ISO/IEC 8211]]]
+
+* [[[ISO1087-1,ISO 1087-1]]]
+
+* [[[ISO11179-3,ISO/IEC 11179-3]]]
+
+* [[[ISO19101,ISO 19101]]]
+
+* [[[ISO19101-1,ISO 19101-1]]]
+
+* [[[ISO19103,ISO 19103]]]
+
+* [[[ISO19107,ISO 19107]]]
+
+* [[[ISO19109,ISO 19109]]]
+
+* [[[ISO19110,ISO 19110]]]
+
+* [[[ISO19115-1,ISO 19115-1]]]
+
+* [[[ISO19115-2,ISO 19115-2]]]
+
+* [[[ISO19115-3,ISO 19115-3]]]
+
+* [[[ISO19118,ISO 19118]]]
+
+* [[[ISO19119,ISO 19119]]]
+
+* [[[ISO19135,ISO 19135]]]
+
+* [[[ISO19136,ISO 19136]]]
+
+* [[[ISO19501,ISO/IEC 19501]]]
+
+* [[[ISO19157,ISO 19157]]]
+
+* [[[ISO19757-3,ISO/IEC 19757-3]]]
+
+* [[[ISO2382-17,ISO/IEC 2382-17]]]
+
+* [[[IHO2,IHO Resolution 2/2007]]],
+span:publisher[International Hydrographic Organization (IHO)],
+span:title[Principles and Procedures for Making Changes to IHO Technical Standards and Specifications.],
+span:docid.IHO[Resolution 2]
+
+* [[[OGC07-036,OGC 07-036]]]
+
+* [[[RFC4648,IETF RFC 4648]]]
+
+* [[[S52,IHO S-52]]]
+
+* [[[S58,IHO S-58]]]
+
+* [[[S99,IHO S-99]]]
+
+* [[[S99A,IHO S-99]]]
+
+* [[[S100,IHO S-100]]]
+
+* [[[S101,IHO S-101]]]
+
+* [[[S111,IHO S-111]]]
+
+* [[[S122,IHO S-122]]],
+span:publisher[International Hydrographic Organization (IHO)],
+span:docid.IHO[S-122],
+span:title[Marine Protected Areas],
+span:edition[Edition 1.0.0],
+span:date[January 2019].
+
+* [[[S123,IHO S-123]]]
+
+* [[[SVG,SVG Tiny 1.2]]],
+span:title[SVGTiny Scalable Vector Graphics (SVG) Tiny 1.2 Specification].
+span:classification.W3C[Recommendation].
+span:date[22 December 2008]
+span:uri[http://www.w3.org/TR/2008/REC-SVGTiny12-20081222/]
+
+* [[[Merriam-Webster,Merriam-Webster Online]]],
+span:title[Merriam-Webster Online].
+span:uri[https://www.merriamwebster.com/dictionary/instantiate]
+
+* [[[S97C,repo:(current-metanorma-collection/part-c)]]],
+span:publisher[International Hydrographic Organization (IHO)],
+span:docid.IHO[S-97],
+span:title[IHO Guidelines for Creating S-100 Product Specifications -- Part C: Data quality]
+
+NOTE: In this document, "S-100" means S-100 Edition 4.0.0 unless a different edition
+is explicitly identified.

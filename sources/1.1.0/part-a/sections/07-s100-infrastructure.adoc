@@ -1,0 +1,126 @@
+== IHO S-100 infrastructure
+
+This section describes IHO Infrastructure that has been developed to support the
+S-100 framework and the e-Navigation concept.
+
+=== IHO Geospatial Infrastructure (GI) Registry
+
+A Registry is the entire information system (or location) in which a collection of
+Registers is located. A Register is a collection of tables in a database containing
+identifiers assigned to items with descriptions of the associated items.
+Descriptions may consist of many types of information including names, definitions
+and codes.
+
+In the case of S-100, the IHO is hosting an online Registry engine called S-100
+Geospatial Information (GI) Registry. The IHO GI Registry can be accessed at
+http://registry.iho.int/[http://registry.iho.int]. This Registry provides the
+facility to access and maintain the various S-100 Registers. The S-100 GI Registry
+contains subordinate Registers, depicted in <<fig-A-7-1>> below.
+
+[[fig-A-7-1]]
+.IHO GI Registry (Version 3)
+image::img11.png[]
+
+Each Register type can be further sub-divided into Domains (for example,
+Hydrographic, Inland ENC, AtoN, etc). The administration of the IHO GI Registry is
+governed by the IHO Publication S-99 -- Operational Procedures for the Organization
+and Management of the S-100 Geospatial Information Registry.
+
+A major benefit of the Registry and Register concept is its flexibility, which
+allows multiple versions of similar entries in the Concept Register using unique
+identification and classification. An entry is classified as being either:
+
+* valid (latest version);
+* superseded (previous versions);
+* retired (no longer recommended for use); or
+* not valid (proposed but not accepted or no longer acceptable).
+
+Due to this classification and time stamps, a version of a Feature Catalogue
+references items that will always be legitimate even if a newer version of the
+referenced item is registered at a later date. This means that if a new item is
+registered or an existing item is amended, a new version of a Product Specification
+is not automatically required as a consequence. The category of "not valid" items is
+included in the Registers specifically to help identify the inappropriate
+reintroduction of previously rejected proposals.
+
+=== Feature Catalogue Builder
+
+A Feature Catalogue is a machine-readable expression of the data model for a Product
+Specification. It can either be constructed with off-the-shelf XML editors or by a
+Feature Catalogue Builder (FCB). Either case must comply with the structure of
+<<S100,part=5>> and the S-100 Feature Catalogue Schema. There is a FCB available
+from IHO for anyone wishing to utilize it in the creation of a Feature Catalogue for
+an S-100-based Product Specification. The software interacts with the IHO GI
+Registry and provides a mechanism for binding elements available in the Registry
+together to form features and attributes; enumerated lists with their available
+values; and so forth. <<fig-A-7-2>> below illustrates the concept of the IHO FCB.
+
+[[fig-A-7-2]]
+.S-100 Feature Catalogue Builder
+image::img12.png[]
+
+The FCB also contains a function for working with proposals that have yet to be
+added to the Registry.
+
+=== DCEG Builder
+
+To simplify the creation of the Data Classification and Encoding Guide (DCEG) for a
+Product Specification, a DCEG Builder has been created. This tool utilizes the
+Feature Catalogue to create the bindings and inputs for the DCEG tables. It is then
+a manual process to add images and specific text to the encoding part of the DCEG
+tables. <<fig-A-7-3>> below shows a high-level overview of the process to create a
+DCEG via the DCEG Builder. An Application Schema is required to make the Feature
+Catalogue, which equates to an XML representation of the Application Schema. The use
+of the Feature Catalogue can be described in the DCEG.
+
+[[fig-A-7-3]]
+.Process of creating a DCEG using the DCEG Builder
+image::img13.png[width=70%]
+
+Use of the DCEG Builder is optional in the preparation of the Product Specification.
+Any S-100-based Product Specification must include sufficient instructions for how
+to encode information in a manner that conforms to the Specification, but these
+instructions do not have to follow a specific DCEG style. However, the DCEG style is
+simple to understand and by utilizing the DCEG builder, it is also easy to create
+tables{blank}footnote:[A suggested format for such tables is described in the IHO
+S-100 Production Specification Template, which is referenced in
+<<S100,part=11,locality:appendix="11-D">> and available from the IHO web site.] of
+feature and information types, attributes, associations and encoding instructions;
+and to ensure that these tables are consistent with the Feature Catalogue. The
+IHO-style feature tables (or equivalent) can be prepared and maintained using
+ordinary office word processing software, but experience shows that ensuring initial
+and continued conformance to the XML Feature Catalogue may be a significant task
+requiring much effort to maintain and keep current. <<fig-A-7-4>> below shows how
+the DCEG Builder is connected to the IHO GI Registry; and shows how the DCEG Builder
+is integrated in the process of creating a Feature Catalogue. Using the Builder can
+greatly simplify the development process and increase consistency with the Feature
+Catalogue. It should be noted that the DCEG Builder is dependent on the Feature
+Catalogue being registered within the Feature Catalogue Database.
+
+[[fig-A-7-4]]
+.DCEG Builder architecture
+image::img14.png[]
+
+[[cls-A-7.4]]
+=== Portrayal Catalogue Builder
+
+Portrayal Catalogues are machine-readable instructions for how to portray data
+compliant with a specific data model for a specific version of a Product
+Specification. They can either be constructed manually or by a Portrayal Catalogue
+Builder (PCB). In either case, they must comply with the structure specified in
+<<S100,part=9>> and the S-100 Portrayal Catalogue Schema. The IHO infrastructure
+includes a PCB for XSLT for any Product Specification development team wishing to
+utilize it in the creation of a Portrayal Catalogue for an S-100-based Product
+Specification.
+
+[[fig-A-7-5]]
+.Portrayal Catalogue Builder
+image::img15.png[]
+
+The software interacts with the Portrayal Register in the IHO GI Registry and the
+Feature Catalogue and provides an interface for binding elements available in the
+IHO GI Registry together to form symbols, line styles and area patterns for the
+desired elements in the Feature Catalogue. <<fig-A-7-5>> above illustrates the PCB
+concept.
+
+A PCB for Lua Portrayal Catalogues is planned for the future.

@@ -1,0 +1,22 @@
+== Introduction
+
+Part C is intended to ensure that data quality aspects are addressed in an
+appropriate and harmonized way for all S-100 based Product Specifications.
+
+This Data Quality Guideline can be used by HSSC Working Groups developing S-100
+based Product Specifications. It provides 10 recommendations for appropriate data
+quality measures as deemed necessary to be used within S-100 based Product
+Specifications.
+
+When drafting a Product Specification, the Data Quality Guideline will serve as a
+guidance document to verify if the appropriate Data Quality Elements have been
+included in the Product Specification. A Data Quality Element is a quantitative
+component documenting the quality of a dataset. The applicability of a Data Quality
+Element to a dataset depends on both the dataset's content and its Product
+Specification, the result being that all available Data Quality Elements may not be
+applicable to all datasets.
+
+The place of data quality measures in dataset and exchange set metadata and the
+encoding of data quality in metadata is described in various ISO standards
+(<<ISO19115>>, <<ISO19139>>, <<ISO19115-1>>, <<ISO19115-2>>, <<ISO19115-3>>,
+<<ISO19157>>) and in <<S100,part="4a">> and <<S100,part="4c">>.

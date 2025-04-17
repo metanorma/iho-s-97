@@ -1,0 +1,26 @@
+== Introduction
+
+Developing S-100-based Product Specifications can be a challenge for those with
+little experience with S-100, especially since S-100 is a framework standard that
+covers a wide range of applications that that may not be utilized in every Product
+Specification. S-97 was created by the International Hydrographic Organization to
+help Product Specification developers to better understand S-100 and to provide
+additional guidance on how to create and extend an S-100-based Product Specification.
+
+A core aim of S-97 is to assist in the creation of harmonized Product Specifications
+that are used within the e-Navigation eco-system. The term e-Navigation eco-system is
+meant to encompass all Product Specifications created for use in IMO-defined
+e-Navigation systems, both on shore and at sea, such as ECDIS; but S-100 also has a
+wide range of applications that can extend beyond e-Navigation.
+
+This guideline serves as a cookbook for anyone planning to develop or extend an
+S-100-compliant Product Specification and consists of three parts:
+
+* Part A is an in-depth description of the various components of an S-100-based
+Product Specification;
+* Part B describes the typical steps and activities involved in creating an
+S-100-based Product Specification. Part B describes the overall process; specific
+activities and tasks; and includes hints for solving specific problems while the
+Product Specification is being developed; and
+* Part C describes the data quality measures deemed appropriate for use in
+S-100-based Product Specifications.

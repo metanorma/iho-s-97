@@ -1,0 +1,160 @@
+== Overview of steps for development
+
+When developing an S-100 based Product Specification it is recommended that
+developers consider each of the stages defined in the basic development process. The
+stages are outlined below and described in greater detail in the following sections.
+
+[[cls-B-5.1]]
+=== Basic development process
+
+The steps described below apply to the development of a Product Specification for a
+new data product.
+
+. *Initiation*. Identify the need for a new data product; define its scope; and
+decide the boundaries between the new product and existing data Product
+Specifications. Obtain sample source material. Describe typical application use
+cases.
+. *Develop the Domain Model/Application Schema*. Define the classes and attributes
+that describe the domain and which are relevant to the data product. Define the
+relationships between the classes and specify applicable constraints. Prepare one or
+more UML diagrams describing the Domain Model.
+. *Populate the IHO GI Registry from the Domain Model*. Propose amendments to
+existing classes and attributes and propose new classes and attributes for addition
+to the Concept and Data Dictionary Registers in the IHO GI Registry using the
+Registry interface. Follow up on any returned proposals or queries from the Registry
+Manager or Domain Control Body.
+. *Develop the Feature Catalogue*. Prepare the XML Feature Catalogue from the
+feature and information classes, attributes and relationships as approved in the IHO
+GI Registry, utilizing the Feature Catalogue Builder.
+. *Define data transfer modes and packaging*. Determine whether data products are to
+be delivered as data files contained in transfer (exchange) sets, by web services
+(and if so, identify or outline a service protocol), e-mail, etc. Determine whether data is to be delivered in real or near real-time. Identify constraints and
+requirements arising from delivery mechanisms and communication constraints such as
+message size, bandwidth limitations, availability of communications to customers,
+licensing and payments, encryption, etc.
+. *Define metadata*. Survey the metadata elements listed in S-100 for their
+appropriateness to the data product and its allowed packaging and delivery methods.
+Define appropriate values and restrictions for the metadata elements listed in
+S-100. Consider whether additional product-specific metadata elements are needed.
+. *Define the data format*. Select an appropriate data format. S-100 provides for 3
+standard delivery formats (ISO 8211, GML, and HDF5). Define format-imposed items
+(for example embedded header metadata). Prepare format-specific artefacts if
+necessary (for example GML "application schema" XSD files for the GML format).
+. *Develop the Data Classification and Encoding Guide (DCEG)*. The DCEG is intended
+for cartographers, editors, and data encoders, rather than application developers or
+OEMs; and should be written from that perspective. A DCEG should contain enough
+overview and general material about basic concepts such as data types, features,
+information types, associations, etc, to give its intended audience a basic
+grounding in the concepts they will need to apply; but its main focus should be on
+what to encode in the data product, and how to encode it.
+. *Define portrayal symbols and rules*. Determine the symbols to be used for
+portrayal and the rules for generating displays from the data product. This means
+deciding which features should be displayed; which combinations of attribute values
+or associated data objects should be assigned distinct symbols; and which
+pre-existing symbols and colours can be reused and which need to be defined. It also
+includes defining the new elements in the appropriate formats.
+. *Registration of portrayal elements*. Propose any new portrayal components (for
+example symbols, colour tokens, line styles, area fills, etc) to the Portrayal
+Register in the IHO GI Registry using the Registry interface. Follow up on any
+returned proposals or queries from the Registry Manager or Domain Control Body.
+. *Develop the Portrayal Catalogue(s).* Prepare a Portrayal Catalogue (or
+Catalogues) for the features and information types which are intended to be
+displayed in the intended application domain(s) and usage scenario(s). This consists
+of encoding the rules in the appropriate portrayal language using the symbols
+determined in step (8).
+. *Define the spatial reference system*. Identify the recommended coordinate
+reference system and vertical datum(s).
+. *Define data product packaging and maintenance*. Define the content and structure
+of delivery packages, updating of data, and any auxiliary content delivered either
+with or as an adjunct to data.
+. *Define validation checks and quality measures*. Define tests for the spatial,
+structural, and conceptual integrity of datasets. Define format-specific
+implementations of validation checks (for example Schematron rules <<ISO19757-3>> for
+the GML format). Define quality measures for the datasets (quality measures will
+generally be statistics about passed and failed tests).
+. *Determine interoperability* with other data products. Determine which if any
+product groups in Interoperability Catalogues are supplemented or enhanced by the
+data product; and how the IHO Interoperability Catalogue will be affected by the new
+product, including updates to display priorities, interleaving, predefined
+combinations and other interoperability rules and operations.
+. *Prepare sample data* for test-beds. Create sample datasets and exchange sets
+conforming to the data format, packaging, and Feature Catalogue defined in the
+Product Specification.
+. *Testing and feedback*. Carry out tests of data production and use of the sample
+data in selected applications to validate the correctness, completeness,
+consistency, and utility of the Product Specification, including related artefacts
+such as the Feature Catalogue and XML schemas.
+
+Development of Product Specifications is an iterative process of continuous
+refinement as it moves through the S-100 Readiness Levels. Developers should expect
+to cycle through the stages above multiple times, in smaller or larger cycles
+depending on experiences and results of each stage. For example, the first
+preparation of sample data (Stage 16) might identify gaps in the Domain Model and
+require revisiting Stage 2 (development of the Domain Model); or the development of
+portrayal rules (Stages 9 - 11) may identify gaps in the Domain Model (Stage 2).
+Passage through some intermediate stages in the cycle may be trivial on the second
+and later passes, as the results may be unaffected by discoveries during later
+stages in the process -- for example, packaging and delivery or choice of spatial
+reference systems are likely to be unaffected by changes identified during the
+preparation of sample data.
+
+<<fig-B-5-1>> below depicts the development process, including probable cycles.
+
+[[fig-B-5-1]]
+.Product Specification development process
+image::img16.png[]
+
+<<S100,part=11,locality:appendix="11-A">>
+describes an idealized process for the basic mechanical steps in
+developing a domain model plus related registry actions. The figure also includes
+black-box stages for "Coordinate Reference System" and "Product Specification
+Documentation" at the end of the process. The actual process is an iterative
+refinement process.
+
+=== Review cycle for S-100-based Product Specifications
+
+IHO Resolution 2/2007 (as amended) outlines the process for development and approval
+of IHO based Product Specifications. As part of this lifecycle it is important that
+Working Groups and Project Teams engage with the IHO Data Quality Working Group
+(DQWG) to review Product Specifications for adherence to S-100 data quality aspects
+and completeness. While this review can occur prior to Edition 1.0.0 (Testing and
+Implementation Edition), the DQWG will review and provide feedback during the
+Edition 1.0.0 to 1.9.n phase Specification development. Edition 1.0.0 of any IHO
+S-100-based Product Specification is not designed for regular use in approved
+arrangements or for provision of operation services by purpose. Edition 2.0.0 of a
+Product Specification is considered to be mature and can be used for implementation.
+<<fig-B-5-2>> below shows the IHO Review Cycle as included in IHO Resolution 2/2007.
+
+[[fig-B-5-2]]
+.Review Cycle (IHO Resolution 2/2007 (as amended))
+image::img17.png[]
+
+=== Process for extending a Specification
+
+If there is a demonstrated need to extend an existing Product Specification,
+developers should review the steps in the basic process in <<cls-B-5.1>> and
+determine which steps can be omitted.
+
+For example, if features, information types, attributes, or relationships are added,
+removed, or modified, most of the steps in the basic process will be needed. The
+spatial reference system and packaging/maintenance may not change in such a revision
+and the corresponding phases can be skipped.
+
+If the extension consists of defining a new transfer mode, such as adding a
+streaming delivery mode for data products originally intended for exchange set
+delivery, it is likely that only the following stages need be executed:
+
+* Transfer mode -- to add the streaming mode for transfer, define specifications for
+servers, etc.
+* Metadata -- to define which metadata elements in the exchange set mode apply to the
+streaming mode, whether any new metadata elements are needed, and how metadata is
+delivered or made available in the new mode.
+* Data format -- to consider whether the already defined data format is appropriate
+for streamed transfer and compatible with the intended service delivery and
+protocols; and specify an appropriate format if necessary.
+* Packaging and maintenance -- to specify the appropriate data wrapper formats and
+service protocols; for example WFS, REST, etc. Defining new wrapper formats or
+protocols is permitted but should be the last resort.
+* Sample data -- preparation of sample data for testing the streaming mode.
+* Testing and feedback -- this should include a prototype or simulated streamed data
+transfer environment.

@@ -1,0 +1,11 @@
+== Data transfer modes and packaging
+
+Define mode of delivery -- exchange set, message, or service. A Product Specification
+may also specify more than one delivery mode.
+
+This needs to be done before metadata is specified because some metadata elements as
+well as the treatment of metadata (for example separate versus embedded) depend on
+delivery mechanisms, constraints, and protocols.
+
+Details of packaging and transfer content can be finalized in a later stage (see
+<<cls-B-18>>).

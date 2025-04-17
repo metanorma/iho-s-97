@@ -1,0 +1,35 @@
+[bibliography]
+== References
+
+* [[[IG-D2,IG-D2.8.II.1]]],
+span:title[INSPIRE Data Specification on Elevation].
+span:classification[Technical Guidelines].
+
+* [[[ISO8211,ISO/IEC 8211]]]
+
+* [[[ISO19101,ISO 19101]]]
+
+* [[[ISO19115,ISO 19115]]]
+
+* [[[ISO19115-1,ISO 19115-1]]]
+
+* [[[ISO19115-2,ISO 19115-2]]]
+
+* [[[ISO19115-3,ISO 19115-3]]]
+
+* [[[ISO19139,ISO/TS 19139]]]
+
+* [[[ISO19157,ISO 19157]]]
+
+* [[[S44,IHO S-44]]]
+
+* [[[S100,IHO S-100]]]
+
+* [[[S101,IHO S-101]]]
+
+* [[[S102,IHO S-102]]]
+
+* [[[S121,IHO S-121]]]
+
+NOTE: In this document, "S-100" means S-100 Edition 4.0.0 unless a different edition
+is explicitly identified.

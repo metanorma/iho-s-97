@@ -1,0 +1,12 @@
+== Feature Catalogue
+
+The Feature Catalogue is an XML document which conforms to the S-100 XML Feature
+Catalogue Schema. Note, for Imagery and Gridded Data, a coverage is a feature type;
+and a Product Specification Feature Catalogue should define the attributes, coverage
+feature (with spatial primitive type 'coverage').
+
+Feature Catalogues should be documented by a text-based documentation of their
+contents, which should also be reviewed by the Project Team and responsible Working
+Group. For review purposes, this text-based documentation should be generated from
+the XML Feature Catalogue. The resultant text can be in Word or PDF; or another
+format preferred by the team.

@@ -1,0 +1,25 @@
+== Reference systems
+
+The preferred coordinate reference system is EPSG 4326 which is based on the WGS 84
+horizontal datum.
+
+Horizontal datum will normally be referenced by giving its code in the EPSG
+Register. If the coordinate reference system is not one of the coordinate reference
+systems in the EPSG Register, a datum may be specified in a support file as
+described in <<S100,part=6>>, should there be a use case in the scope of the data
+product.
+
+A set of vertical datums is listed in <<S100,locality:appendix="4a-D">>
+(S100_VerticalAndSoundingDatum). Product Specification developers are encouraged to
+adopt the S-101 ENC datum (either standard or local S-101 ENC datum) as a common
+vertical reference datum if possible. If a need for an additional datum is
+identified, it should be proposed as a revision to S-100.
+
+S-100 includes 'local datum' as an allowed value for datum attributes, but this is
+of limited utility even within a data product. (S-101 cites an example of use of
+local datum in a non-tidal basin, where depths may refer to a sounding datum
+different from that in open waters. If this area is navigable at the maximum display
+scale of the ENC data, the value of this datum must be encoded using attribute
+vertical datum = 24 (local datum), in a meta-feature co-incident with the area
+covered by the dock.) Data conversion to/from unspecified local datums would be
+problematic.

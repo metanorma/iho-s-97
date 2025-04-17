@@ -1,0 +1,62 @@
+= IHO Guidelines for Creating S-100 Product Specifications -- Part B: Steps in the Development of a Product Specification
+:series: S
+:docnumber: 97
+:doctype: specification
+:edition: 1.1.0
+:language: en
+:published-date: 2020-06
+:copyright-year: 2020
+:status: in-force
+:committee: hssc
+:workgroup: S-100
+:mn-document-class: iho
+:mn-output-extensions: xml,html,doc,pdf,rxl
+:local-cache-only:
+:data-uri-image:
+:imagesdir: images
+
+include::sections/01-overview.adoc[]
+
+include::sections/02-intro.adoc[]
+
+include::sections/03-references.adoc[]
+
+include::sections/04-terms.adoc[]
+
+include::sections/05-dev-overview.adoc[]
+
+include::sections/06-initiation.adoc[]
+
+include::sections/07-app-schema.adoc[]
+
+include::sections/08-data-classification.adoc[]
+
+include::sections/09-gi-registry.adoc[]
+
+include::sections/10-feature-catalogue.adoc[]
+
+include::sections/11-data-transfer.adoc[]
+
+include::sections/12-metadata.adoc[]
+
+include::sections/13-data-encoding.adoc[]
+
+include::sections/14-portrayal-elements.adoc[]
+
+include::sections/15-portrayal-registration.adoc[]
+
+include::sections/16-portrayal-catalogue.adoc[]
+
+include::sections/17-reference-system.adoc[]
+
+include::sections/18-data-product-delivery.adoc[]
+
+include::sections/19-validation-checks.adoc[]
+
+include::sections/20-interoperability-prep.adoc[]
+
+include::sections/21-sample-data.adoc[]
+
+include::sections/22-testing.adoc[]
+
+include::sections/23-work-processes.adoc[]

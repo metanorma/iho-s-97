@@ -1,0 +1,291 @@
+== Recommendations for Product Specification developers
+
+S-97 Part C applies the Data Quality concept from <<ISO19157>> to the development
+of S-100 based Product Specifications. It provides ten recommendations which assist
+in finding and applying applicable Data Quality Measures as described in S-100.
+
+=== Completeness > Commission / Omission
+
+DQ_CompletenessCommission: Defined in
+<<S100,locality:appendix="4c-C">>.
+
+DQ_CompletenessOmission: Defined in
+<<S100,locality:appendix="4c-C">>.
+
+[recommendation]
+====
+Data Quality Measure Completeness (Commission/Omission) to be included in the
+Product Specification.
+====
+
+=== Logical Consistency > Conceptual Consistency
+
+The Conceptual Schema Language is described in <<S100,part=1>>. It provides the description of:
+
+* classes;
+* attributes;
+* basic data types;
+* primitive types;
+* complex types;
+* predefined derived types;
+* enumerated types;
+* codelist types;
+* relationships and associations;
+* composition and aggregation;
+* stereotypes and optional, conditional, and mandatory attributes and associations;
+* naming and name spaces;
+* notes; and
+* packages.
+
+[recommendation]
+====
+Data Quality Measure Conceptual Consistency to follow the guidelines from
+<<S100,part=1>> and to be included in the Product Specification.
+====
+
+=== Logical Consistency > Domain Consistency
+
+This is described in <<S100,part=5>>. This Part provides a
+standard framework for organizing and reporting the classification of real world
+phenomena in a set of geographic data. It defines the methodology for classification
+of the feature types and specifies how they are organized in a Feature Catalogue and
+presented to the users of a set of geographic data. This methodology is applicable
+to creating catalogues of feature types in previously uncatalogued domains and to
+revising existing Feature Catalogues to comply with standard practice. It applies to
+the cataloguing of feature types that are represented in digital form. Its
+principles can be extended to the cataloguing of other forms of geographic data.
+
+[recommendation]
+====
+Data Quality Measure Domain Consistency to follow the guidelines from
+<<S100,part=5>> and to be included in the Product Specification.
+====
+
+=== Logical Consistency > Format Consistency
+
+This is described in <<S100,part=10>>. S-100 does not
+mandate particular encoding formats so it is left to developers of Product
+Specifications to decide on suitable encoding standards and to document their chosen
+format. The issue of encoding information is complicated by the range of encoding
+standards that are available, which include but are not limited to: ISO/IEC8211,
+GML, XML, GeoTiff, HDF-5, JPEG2000.
+
+[recommendation]
+====
+Data Quality Measure Format Consistency to follow the guidelines from
+<<S100,part=10>> and to be included in the Product Specification.
+====
+
+=== Logical Consistency > Topological Consistency
+
+This is described in <<S100,part=7>>. It supports 0, 1, 2, and 2.5 dimensional
+spatial schemas and two levels of complexity -- geometric primitives and geometric
+complexes.
+
+The conditions for topological consistency are provided in
+<<S100,part=7,clause="7-4.3">> and <<S100,locality:appendix="7-A">>. The Figures in
+<<S100,part=7,clause="7-4.3">> and <<S100,locality:appendix="7-A">> should be
+referred to for more details.
+
+[recommendation]
+====
+Data Quality Measure Topological Consistency to follow the guidelines from
+<<S100,part=7>> and to be included in the Product Specification.
+====
+
+=== Positional Accuracy
+
+Positional Accuracyis described by <<S100,part="4c">>.
+
+This is further subdivided into Absolute or External Accuracy, Vertical Position
+Accuracy, Horizontal Positional Accuracy, Gridded Data Position Accuracy.
+
+One should take notice of the different ways in which spatial data referencing is
+applied. Point set data includes a coordinate direct position for each point in the
+point set (points/curves). Gridded data references the grid as a whole. The two
+spatial properties of gridded data describe how the spatial extent was tessellated
+into small units and spatial referencing to the earth. The <<ISO19123>> Standard
+indicates that a grid may be defined in terms of a coordinate reference system. This
+requires additional information about the location of the grid's origin within the
+coordinate reference system; the orientation of the grid axes; and a measure of the
+spacing between the grid lines. A grid defined in this way is called a rectified
+grid. If the coordinate reference system is related to the Earth by a datum, the
+grid is a georectified grid. The essential point is that the transformation of grid
+coordinates to coordinates of the external coordinate reference system is an affine
+transformation.
+
+For Positional Accuracy, currently in the hydrographic community the 95% confidence
+level (Gaussian distribution) is commonly used. The Root Mean Square Error (RMSE) is
+commonly used in the scientific community. RMSE is the square root of the average of
+the set of squared differences between dataset coordinate values and coordinate
+values from an independent source of higher accuracy for identical points.
+
+Other calculation methods are also possible, depending on the specific Product
+Specification. Comparisons of S-44, S-101, S-102, and S-121 were done. They use
+various methods of calculating and/or expressing the same concept (uncertainty).
+Some of the methods in use are:
+
+* S-44: 95% (2*SD)
+* S-121: Standard Circular Error (=0.7071*SQRT(SD(X)+SD(Y))), converted to a
+category attribute.
+* S-101: All horizontal positional (2D), vertical (1D), horizontal distance (1D) and
+orientation (1D) uncertainty attributes concern the 95% confidence level of the
+variation associated with all sources of measurement, processing and visualization
+error. Uncertainty is encoded as: (1) uncertainty fixed (The maximum absolute value
+of the one-dimensional error (for vertical) or two-dimensional error (for
+horizontal). The error is assumed to be positive and negative.) and (2) uncertainty
+variable factor (The factor to be applied to a quantity to calculate its
+uncertainty. The fraction that equates to the factor (or percentage) contributing to
+the variable uncertainty component is indicated, that is a factor of 5% is encoded
+as 0.05.)
+
+The situation above is like using nautical miles, imperial miles, and kilometers
+separately between different Product Specifications -- which may work well in
+isolation, but when combining the different Product Specifications and use computer
+algorithms to create a "smart" system based on these quality parameters, great care
+must be taken in developing systems to ensure confusion is not introduced.
+
+The IHO DQWG is considering different approaches to addressing this situation, and
+may leave the separate Product Specifications with their own parameters but inform
+developers and other users of the Specifications how to convert from one accuracy
+standard to another.
+
+[recommendation]
+====
+Data Quality Measure Positional Accuracy to follow the guidelines from
+<<S100,part="4c">> and to be included in the Product Specification. The calculation
+of the Positional Accuracy is to be further harmonized where possible with other
+S-100 based Product Specifications.
+====
+
+=== Thematic Accuracy
+
+Thematic Accuracyis described in <<ISO19157>>.
+
+This is further subdivided into: Quantitative Attribute Accuracy; Non-quantitative
+Attribute Accuracy; and Thematic Classification Correctness.
+
+The data content of a geographic application is defined in accordance with a view of
+real world features and in the context of the requirements of a particular
+application. The content is structured in terms of objects. This document considers
+two types of object:
+
+. Features -- features are defined together with their properties.
+. Information Types -- information types are used to share information among features
+and other information types. Information types have only thematic attribute
+properties.
+
+For Thematic Classification Correctness, the assignment of an item to a certain
+class can either be correct or incorrect.
+
+For Quantitative Attribute Accuracy, the accuracy of quantitative attributes can be
+measured in terms of uncertainty intervals.
+
+For Non-quantitative Attribute Accuracy, the attribute values of non-quantitative
+attributes can be correct or incorrect.
+
+[recommendation]
+====
+Data Quality Measure Thematic Accuracy to follow the guidelines from
+<<S100,part="4c">> and to be included in the Product Specification.
+====
+
+=== Temporal Quality
+
+Temporal Quality is described by <<S100,part="4c">>.
+
+Temporal Consistency and Temporal Validity are recommended to be included as this
+provides the user with the guarantee that any information in the temporal-spatial
+domain is registered correctly. For data elements with a very precise temporal
+attribute (for example remote sensing), the temporal accuracy may also be provided.
+
+[recommendation]
+====
+Data Quality Measure Temporal Quality to follow the guidelines from
+<<S100,part="4c">> and to be included in the Product Specification. Temporal
+Consistency and Temporal Validity should be included.
+====
+
+=== Aggregation
+
+Data Quality specified at upper level (for example series) is applicable at lower
+level (for example dataset), see <<table-C-6-1>> (quoted from <<ISO19157>>) below. If
+the Data Quality differs between the upper and lower level, then supplemental
+information should be provided at the lower level.
+
+[[table-C-6-1]]
+.Hierarchical levels
+[cols="^,^,^"]
+|===
+.5+a| [%unnumbered]
+image::img28.png[]
+2+| Series
+2+| Dataset
+2+| Subset
+| Feature type | Attribute type
+| Feature instance | Attribute instance
+|===
+
+In the case of aggregation of different quality results, the standalone quality
+report should provide full information on the original results (with evaluation
+procedures and measures applied); the aggregated result; and the aggregation method,
+whereas the metadata may describe only the aggregated result with a reference to the
+original results described in the standalone quality report.
+
+The aggregated Data Quality result provides a result if the dataset has passed
+conformance to the Data Product Specification.
+
+[recommendation]
+====
+Data Quality Measure Aggregation results should be included to indicate if the
+dataset/dataset series have passed the Product Specifications.
+====
+
+=== Usability
+
+Usability is based on user requirements. All quality elements may be used to
+evaluate usability. Usability evaluation may be based on specific user requirements
+that cannot be described using the quality elements described above. In this case,
+the usability element shall be used to describe specific quality information about a
+dataset's suitability for a particular application or conformance to a set of
+requirements.
+
+All Product Specifications should have a paragraph describing Data Quality. To
+ensure harmonization across different Product Specifications, DQWG recommends that
+all Product Specifications share a common text explaining the concept of Data
+Quality -> Introduction to Data Quality. The text below is a proposal for this
+common introduction:
+
+[quote]
+____
+*Introduction to data quality*
+
+Data quality allows users and user systems to assess fitness for use of the provided
+data. Data quality measures and the associated evaluation are reported as metadata
+of a data product. This metadata improves interoperability with other data products
+and provides usage by user groups that the data product was not originally intended
+for. The secondary users can make assessments of the data product usefulness in
+their application based on the reported data quality measures.
+
+For < this Product Specification > the following Data Quality Elements have been
+included{blank}footnote:[As deemed necessary by the IHO -- Hydrographic Standards and
+Services Committee]:
+
+* Conformance to this Product Specification;
+* Intended purpose of the data product;
+* Completeness of the data product in terms of coverage;
+* Logical Consistency;
+* Positional Uncertainty and Accuracy;
+* Thematic Accuracy;
+* Temporal Quality;
+* Aggregation measures;
+* Validation checks or conformance checks including:
+** General tests for dataset integrity;
+** Specific tests for a specific data model.
+____
+
+[recommendation]
+====
+Paragraph "Introduction to data quality" to be used as a template by all S-100 based
+Product Specifications.
+====

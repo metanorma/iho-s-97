@@ -1,0 +1,127 @@
+[heading=terms and definitions]
+== Terms and abbreviations
+
+[[cls-C-4.1]]
+=== Terms
+
+==== data product specification
+
+a detailed description of a dataset or dataset series together with additional
+information that will enable it to be created, supplied to, and used by another
+party. A data product specification provides a description of hydrographic concepts
+and a specification for mapping the universe of discourse to a dataset. It may be
+used for production, sales, end-use or other purposes
+
+==== data quality element
+
+quantitative component documenting the quality of a dataset
+
+[.source]
+<<ISO19101>>
+
+[.source]
+<<S100,annex=A>>
+
+NOTE: The applicability of a data quality element to a dataset depends on both the
+dataset's content and its product specification, the result being that all data
+quality elements may not be applicable to all datasets
+
+==== data quality evaluation procedure
+
+the whole of operations used in applying and reporting quality evaluation methods
+and their results
+
+==== data quality measure
+
+an evaluation of a data quality sub-element
+
+==== data quality overview element
+
+the non-quantitative component documenting the quality of a dataset. Information
+about the purpose, usage, and lineage of a dataset is non-quantitative quality
+information
+
+==== data quality result
+
+a value or set of values resulting from applying a data quality measure or the
+outcome of evaluating the obtained value or set of values against a specified
+conformance quality level
+
+==== data quality scope
+
+the extent or characteristic(s) of the data for which quality information is reported
+
+NOTE: The scope for a dataset can comprise a dataset series to which the dataset
+belongs, the dataset itself, or a smaller grouping of data located physically within
+the dataset sharing common characteristics. Common characteristics can be an
+identified feature type, feature attribute, or feature relationship; data collection
+criteria; original source; or a specified geographic or temporal extent.
+
+==== data quality sub-element
+
+a component of a data quality element describing a certain aspect of that data
+quality element
+
+==== Metadata ISO19115
+
+quality report in the format specified in the relevant ISO standards
+(<<ISO19115-1>> / <<ISO19115-2>> / <<ISO19115-3>> and <<ISO19157>>)
+
+==== metaquality
+
+information about the reliability of data quality results
+
+[.source]
+<<ISO19157>>
+
+==== result scope
+
+scope of the (data quality) result
+
+[.source]
+<<ISO19157>>, adapted
+
+NOTE: Result scope is a subset of the data quality scope.
+
+==== standalone quality report
+
+free text document providing fully detailed information about data quality
+evaluations, results and measures used
+
+[.source]
+<<ISO19157>>
+
+=== Abbreviations
+
+DQWG:: IHO Data Quality Working Group
+
+ECDIS:: Electronic Chart Display and Information System
+
+ECS:: Electronic Chart System
+
+ENC:: Electronic Navigational Chart
+
+GI:: Geospatial Information (generally followed by "registry" or "register," meaning
+either the IHO Geospatial Information Registry or a specific register in it).
+
+GML:: Geography Markup Language
+
+GSD:: Ground Sampling Distance
+
+HDF-5:: Hierarchical Data Format Version 5
+
+IEC:: International Electrotechnical Commission
+
+IHO:: International Hydrographic Organization
+
+IMO:: International Maritime Organization
+
+ISO:: International Organization for Standardization
+
+PS:: Product Specification
+
+RMSE:: Root Mean Square Error
+
+SD:: Standard Deviation
+
+XML:: eXtensible Markup Language

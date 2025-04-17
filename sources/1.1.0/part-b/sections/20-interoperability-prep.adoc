@@ -1,0 +1,32 @@
+== Preparing for interoperability
+
+Product Specification developers should carry out the activities described below if
+the data product is a candidate for inclusion in an Interoperability Catalogue.
+Further details on these activities will be provided in a future edition of S-100
+and in IHO Publication S-98 (in preparation).
+
+* Determine which, if any, product groups in Interoperability Catalogues are
+supplemented or enhanced by the data product.
+* Determine whether, and how, the IHO Interoperability Catalogue will be affected by
+the new product; including updates to display priorities, interleaving, predefined
+combinations and other interoperability rules and operations.
+* Revise Portrayal Catalogues upon recommendation by the IHO Interoperability Team.
+* Compare the Application Schema to related Product Specifications and advise the
+developers of the Interoperability Catalogue on their similarity to features in
+other Product Specifications. This comparison should include feature concept
+similarity, attribute bindings, attribute value domains, potential discrepancies in
+feature geometries, etc.
+* Examine the Specification scope and factors affecting the quality of information
+which may also be present in other products; for example, whether information is for
+context or background in one product but a significant part of the other. The
+results of this analysis should be communicated to Interoperability Catalogue
+developers.
+* Consider interactions due to cartographic objects; for example, text placement
+issues in interoperability mode. Product Specification teams should consult with
+OEMs on how to mitigate such issues.
+* Advise Interoperability Catalogue developers on whether features are supplementary
+information for features in another product. Such features may be combined as part
+of interoperability.
+* Attempt to harmonize effects of maximum and minimum display scales used by
+datasets in order to avoid situations where one data product is within display scale
+but a complementary product is not.

@@ -1,0 +1,23 @@
+== Registration of portrayal elements
+
+Portrayal elements must be registered in the Portrayal Register of the IHO GI
+Registry. Elements that need to be registered are listed below. A portrayal element
+needs to be registered only if it is new{blank}footnote:[This clearly introduces a
+dependency between different data products. The Portrayal Register design and
+business processes to manage such dependencies need to be worked out. This section
+may have to be revised after that is done.] to the Register -- elements that are
+already in the Register need not be registered again.
+
+* New symbols, fonts, line styles, area fills, and pixmaps.
+* New display modes.
+* New viewing group layers.
+* Viewing groups.
+* New display planes.
+* New colour tokens.
+* New colour profiles used by portrayal of this product. If there are multiple
+palettes (for example day/night/dusk), the colour profile file(s) must define all
+palettes.
+* New CSS files encoding the colour tokens and RGB values used by all symbols in the
+portrayal of this product.
+* New context parameters.
+* New display priorities.

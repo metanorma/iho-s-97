@@ -1,0 +1,411 @@
+[heading=terms and definitions]
+== Terms and abbreviations
+
+=== Terms
+
+==== abstract class
+
+an object class which cannot be {{instantiate,instantiated}}, or is designated in an information
+model as not allowed to be instantiated
+
+NOTE: Subclasses of an abstract class may be either abstract or non-abstract.
+
+==== aggregation
+
+special form of association that specifies a whole-part relationship between the
+aggregate (whole) and a component part (see {{composition}})
+
+[.source]
+<<ISO19103>>
+
+==== application
+
+manipulation and processing of data in support of user requirements
+
+[.source]
+<<ISO19101-1>>
+
+==== application schema
+
+{{conceptual schema}} for data required by one or more {{application,applications}}
+
+[.source]
+<<ISO19101-1>>
+
+==== association
+
+semantic relationship between two or more classifiers that specifies connections
+among their instances
+
+[.source]
+<<ISO19103>>
+
+==== attribute
+
+. named property of an entity
++
+--
+[.source]
+<<ISO2382-17>>
+
+NOTE: Describes a geometrical, topological, thematic or other characteristic of an
+entity.
+--
+
+. UML: feature within a classifier that describes a range of values that instances of
+the classifier may hold
++
+--
+[.source]
+<<ISO19501>>, adapted
+--
+
+. XML: name-value pair contained in an element
++
+--
+[.source]
+<<ISO19136>>
+--
+
+==== base64
+
+an encoding designed to represent arbitrary sequences of octets in a form that allows
+the use of both upper- and lowercase letters but that need not be human readable
+
+[.source]
+<<RFC4648>>, restyled
+
+==== code
+
+representation of a label according to a specified scheme
+
+[.source]
+<<ISO19118>>
+
+==== codelist
+
+value domain including a code for a permissible value
+
+[.source]
+<<ISO19136>>
+
+==== codespace
+
+rule or authority for a code, name, term or category
+
+[.source]
+<<ISO19136>>
+
+[example]
+Examples of codespaces include dictionaries, authorities, codelists, etc.
+
+==== composition
+
+form of aggregation association with strong ownership and coincident lifetime as part
+of the whole
+
+[.source]
+<<ISO19103>>
+
+==== conceptual model
+
+{{model}} that defines concepts of a universe of discourse
+
+[.source]
+<<ISO19101-1>>
+
+==== conceptual schema
+
+formal description of a {{conceptual model}}
+
+[.source]
+<<ISO19101-1>>
+
+==== data client
+
+an end-user receiving encrypted S-100-based data; the data client will be using a
+software application (for example, ECDIS) to perform many of the operations detailed
+within the S-100 protection scheme
+
+[.source]
+<<S100,part=15>>, adapted
+
+[example]
+An ECDIS user.
+
+==== data permit
+
+file containing encrypted product keys required to decrypt the licensed products,
+normally created specifically for a particular {{data client}}
+
+[.source]
+<<S100,part=15>>, adapted
+
+==== data server
+
+an organization producing encrypted data files or issuing {{data permit,data permits}}
+to {{data client,data clients}}
+
+[.source]
+<<S100,part=15>>, adapted
+
+==== feature
+
+abstraction of real world phenomena
+
+[.source]
+<<ISO19101>>
+
+NOTE: A feature may occur as a type, class, or an instance. Feature type or feature instance should be used when only one is meant. {{feature class,Feature class}} should be used in the context of a model or application schema.
+
+[example]
+The phenomenon named 'Eiffel Tower' may be classified with other phenomena into a feature type 'tower'.
+
+==== feature association
+
+{{relationship}} that links instances of one feature type with instances of the same
+or a different feature type
+
+[.source]
+<<ISO19110>>
+
+==== feature attribute
+
+characteristic of a feature
+
+[.source]
+<<ISO19101>>
+
+NOTE: A feature attribute type has a name, a data type and a domain associated to it.
+A feature attribute instance has an attribute value taken from the value domain of
+the feature attribute type.
+
+[example]
+A feature attribute named 'colour' may have an attribute value "green",
+which belongs to the data type "text".
+
+[example]
+A feature attribute named 'length' may have an attribute value "82.4", which
+belongs to the data type "real".
+
+==== feature catalogue
+
+a catalogue containing definitions and descriptions of the *feature types*,
+{{feature attribute,feature attributes}} and {{feature association,feature associations}}
+occurring in one or more sets of geographic data
+
+[.source]
+<<ISO19110>>
+
+==== feature class
+
+a class in an {{application schema}} or {{model}} that represents a {{feature}}
+
+==== identifier
+
+a linguistically independent sequence of characters capable of uniquely and
+permanently identifying that with which it is associated
+
+[.source]
+<<ISO11179-3>>, adapted
+
+==== information type
+
+an identifiable unit of information in a dataset with only thematic attribute
+properties
+
+[.source]
+<<S100>>, adapted
+
+[example]
+An information type might be a used to carry a Chart Note.
+
+NOTE: Information types can also be associated with each other. This could be done
+where there is further supplementary information that is relevant to the information
+type or where there is a need to translate the information. For example, a primary
+information object carrying a Chart Note may contain text in English and an
+associated supplementary information object may carry the same text in German.
+
+==== instantiate
+
+represent by a concrete instance
+
+[.source]
+<<Merriam-Webster>>
+
+==== interface
+
+named set of {{operation,operations}} that characterize the behaviour of an entity
+
+[.source]
+<<ISO19119>>
+
+==== metadata
+
+information about a {{resource}};
+
+[.source]
+<<ISO19115-1>>
+
+data that defines and describes other data
+
+[.source]
+<<ISO11179-3>>
+
+==== model
+
+abstraction of some aspects of reality
+
+[.source]
+<<ISO19109>>
+
+==== operation
+
+specification of a transformation or query that an object may be called to execute
+
+[.source]
+<<ISO19119>>
+
+NOTE: An operation has a name and a list of parameters.
+
+==== register
+
+set of files containing identifiers assigned to items with descriptions of the
+associated items
+
+[.source]
+<<ISO19135>>
+
+NOTE: Descriptions may consist of many types of information, including names,
+definitions and codes.
+
+==== registry
+
+information system on which a {{register}} is maintained
+
+[.source]
+<<ISO19135>>
+
+==== relationship
+
+semantic connection among {{model}} elements
+
+[.source]
+<<ISO19103>>
+
+==== resource
+
+identifiable asset or means that fulfils a requirement
+
+[.source]
+<<ISO19115-1>>
+
+[example]
+Dataset, dataset series, service, document, initiative, software, person or
+organization.
+
+==== scheme administrator
+
+organization solely responsible for maintaining and coordinating the protection
+scheme specified by S-100
+
+[.source]
+<<S100,part=15>>, adapted
+
+==== service
+
+distinct part of the functionality that is provided by an entity through
+{{interface,interfaces}}
+
+[.source]
+<<ISO19119>>
+
+==== spatial object
+
+object used for representing a spatial characteristic of a feature
+
+[.source]
+<<ISO19107>>
+
+==== stream
+
+in online data exchange: a continuous sequence of fragmented data to be transported
+by a communication system
+
+[.source]
+<<S100>>
+
+==== universe of discourse
+
+view of the real or hypothetical world that includes everything of interest
+
+[.source]
+<<ISO19101-1>>
+
+==== vocabulary
+
+terminological dictionary which contains designations and definitions from one or
+more specific subject fields
+
+[.source]
+<<ISO1087-1>>
+
+=== Abbreviations
+
+AIS:: Automatic Identification System
+
+DQWG:: Data Quality Working Group
+
+ECDIS:: Electronic Chart Display and Information System
+
+ENC:: Electronic Navigational Chart
+
+GML:: Geography Markup Language
+
+GFM:: General Feature Model
+
+GI:: registry Geospatial Information registry
+
+HDF:: Hierarchical Data Format
+
+HTTP:: Hypertext Transfer Protocol
+
+HTTPS:: HTTP Secure
+
+IALA:: International Association of Lighthouse Authorities
+
+IEC:: International Electrotechnical Commission
+
+IHO:: International Hydrographic Organization
+
+IMO:: International Maritime Organization
+
+ISO:: International Organization for Standardization
+
+RENC:: Regional ENC Coordinating Centre
+
+REST:: Representational State Transfer
+
+SENC:: System Electronic Navigational Chart
+
+SOAP:: Simple Object Access Protocol
+
+SOS:: Sensor Observation Service
+
+SSL:: Secure Sockets Layer
+
+SVG:: Scalable Vector Graphics
+
+TCP/IP:: Transmission Control Protocol/ Internet Protocol
+
+VTS:: Vessel Traffic Service
+
+WSDL:: Web Services Description Language
+
+WFS:: Web Feature Service
+
+XML:: eXtensible Markup Language
+
+XSD:: XML Schema Definition
+
+XSLT:: eXtensible Stylesheet Language Transformations
