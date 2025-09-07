@@ -1,49 +1,70 @@
 ---
 directives:
   - documents-inline
+  - recompile-xml: true
+  #- coverpage: index.html
+
+output_folder: collection
 
 bibdata:
+  title:
+    type: title-main
+    language: en
+    content: IHO S-97 IHO Guidelines for Creating S-100 Product Specifications
+
   type: collection
+
   docid:
     type: iho
     id: IHO S-97
+
+  edition: "1.1.0"
+
+  date:
+    - type: created
+      value: "2020"
+
+  copyright:
+    owner:
+      name: International Hydrographic Organization
+      abbreviation: IHO
+    from: "2020"
 
 format:
   - xml
   - html
   - presentation
+  - doc
   - pdf
 
-entry:
-  - file: _site/documents/1.1.0/part-a/document.xml
-    identifier: part-a
-  - file: _site/documents/1.1.0/part-b/document.xml
-    identifier: part-b
-  - file: _site/documents/1.1.0/part-c/document.xml
-    identifier: part-c
+manifest:
+  docref:
+    - file: sources/1.1.0/part-a/document.adoc
+      identifier: part-a
+    - file: sources/1.1.0/part-b/document.adoc
+      identifier: part-b
+    - file: sources/1.1.0/part-c/document.adoc
+      identifier: part-c
 
-output_folder: collection
-
-prefatory-content:
-|
+prefatory-content: |
   [.preface]
   == metanorma-extension
-
+  
   [.boilerplate]
   --
   Changes to this Specification are coordinated by the IHO S-100 Working Group. New
   editions will be made available via the IHO website. Maintenance of the Specification
   shall conform to IHO Resolution 2/2007 (as amended).
   --
-
+  
   === document history
-
+  
   [source,yaml]
   ----
   - date:
     - type: published
-      value:  2018-01-31
-    edition: 0.1
+      value: 2018-01-31
+    edition: "0.1"
     contributor:
     - person:
         name:
@@ -57,8 +78,8 @@ prefatory-content:
       - description: First draft
   - date:
     - type: updated
-      value:  2018-08-31
-    edition: 0.2
+      value: 2018-08-31
+    edition: "0.2"
     contributor:
     - person:
         name:
@@ -72,8 +93,8 @@ prefatory-content:
       - description: Comments from NIPWG and S-100WG; multiple updates to conform to S-100 Edition 4.0.0; miscellaneous editorial updates
   - date:
     - type: updated
-      value:  2019-03-11
-    edition: 1.0.0 RC1
+      value: 2019-03-11
+    edition: "1.0.0 RC1"
     contributor:
     - person:
         name:
@@ -87,8 +108,8 @@ prefatory-content:
       - description: IHO Secretariat editorial changes and styling; S-100 WG4 decisions; references updated following publication of S-100 4.0.0, S-122, S-123.
   - date:
     - type: updated
-      value:  2019-05
-    edition: 1.0.0
+      value: 2019-05
+    edition: "1.0.0"
     contributor:
     - organization:
         name: International Hydrographic Organization
@@ -98,8 +119,8 @@ prefatory-content:
      - description: First Edition.
   - date:
     - type: updated
-      value:  2020-06
-    edition: 1.1.0
+      value: 2020-06
+    edition: "1.1.0"
     contributor:
     - organization:
         name: International Hydrographic Organization
