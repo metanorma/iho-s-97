@@ -23,6 +23,9 @@ https://iho.int[IHO] website.
 This repository contains the source files of S-97 guidelines, including:
 
 * S-97 1.1.0 - IHO Guidelines for Creating S-100 Product Specifications
+** Part A - Content
+** Part B - Steps in the Development of a Product Specification
+** Part C - Data Quality
 
 These documents are encoded in the
 https://www.metanorma.org/author/topics/document-format/[Metanorma AsciiDoc format].
