@@ -1,6 +1,9 @@
 = IHO Guidelines for Creating S-100 Product Specifications -- Part A: Content
 :series: S
 :docnumber: 97
+:partnumber: A
+:title: IHO Guidelines for Creating S-100 Product Specifications
+:title-part: Content
 :doctype: specification
 :edition: 1.1.0
 :language: en
@@ -8,9 +11,9 @@
 :copyright-year: 2020
 :status: in-force
 :committee: hssc
-:workgroup: S-100
+:workgroup: s100
 :mn-document-class: iho
-:mn-output-extensions: xml,doc,html,pdf,rxl
+:mn-output-extensions: xml,html,doc,pdf,rxl
 :local-cache-only:
 :data-uri-image:
 :imagesdir: images
