@@ -36,6 +36,7 @@ format:
   - presentation
   - doc
   - pdf
+  - rxl
 
 manifest:
   docref:
@@ -49,16 +50,16 @@ manifest:
 prefatory-content: |
   [.preface]
   == metanorma-extension
-  
+
   [.boilerplate]
   --
   Changes to this Specification are coordinated by the IHO S-100 Working Group. New
   editions will be made available via the IHO website. Maintenance of the Specification
   shall conform to IHO Resolution 2/2007 (as amended).
   --
-  
+
   === document history
-  
+
   [source,yaml]
   ----
   - date:
